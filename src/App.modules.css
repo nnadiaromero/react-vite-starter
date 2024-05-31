@@ -1,0 +1,22 @@
+.bulbasaur{
+    width: 285px;
+    height: 400px;
+    background-color: #A2CE69;
+    border-radius: 24px;
+    padding: 8px;
+}
+.features{
+    width: 269px;
+    height: 250px;
+    background-color:#ffffff;
+    border-radius: 20px;
+    padding: 12px 8px 12px 8px;
+    
+
+}
+.imgbulbasaur{
+    width: 140px;
+    height: 140px;
+    position:absolute;
+
+}
