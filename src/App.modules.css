@@ -1,15 +1,15 @@
 .bulbasaur{
     width: 285px;
     height: 400px;
-    background-color: #A2CE69;
-    border-radius: 24px;
+    background-color: var(--color-type-grass);
+    border-radius: var(--border-radius-xl);
     padding: 8px;
 }
 .features{
     width: 269px;
     height: 250px;
-    background-color:#ffffff;
-    border-radius: 20px;
+    background-color:var(--color-brand-0);
+    border-radius: var(--border-radius-l);
     padding: 12px 8px 12px 8px;
     
 
@@ -19,4 +19,19 @@
     height: 140px;
     position:absolute;
 
+}
+.titles{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 8px 0px 8px;
+    font-weight: 600px;
+    margin: 8px;
+
+}
+.name{
+    font-size: var(--font-size-desktop-headline);
+
+}
+.numero{
+    font-size:var(--font-size-desktop-subheadline);
 }

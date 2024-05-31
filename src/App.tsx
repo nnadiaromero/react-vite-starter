@@ -5,8 +5,10 @@ function App() {
     <main>
       <section className="cards">
         <article className="bulbasaur">
-          <h2 className="titulo">Bulbasaur</h2>
+          <title className="titles">
+          <h2 className="name">Bulbasaur</h2>
           <h3 className="numero">#001</h3>
+          </title>
           <img className="imgbulbasaur" src="bulbasaur.png" />
           <div className="features">
           <div className="natureFeatures">
