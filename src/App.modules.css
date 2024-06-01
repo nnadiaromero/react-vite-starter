@@ -78,10 +78,47 @@
   display: flex;
   justify-content: center;
   gap: var(--spacing-m);
-  font-size: var(--font-size-desktop-caption)
+  font-size: var(--font-size-desktop-caption);
+  height: 2rem;
 }
 .line {
   background-color: var(--color-brand-10);
   height: var(--spa);
   width: 1px;
+}
+
+.weightIcon,
+.rulerIcon {
+  width: 1.25rem;
+  margin-right: var(--spacing-2xs);
+}
+.tagPhysical {
+  display: flex;
+  align-items: center;
+}
+.lista {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.item {
+  color: var(--color-brand-30);
+}
+.itemList {
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  height: 1rem;
+}
+.itemInfo {
+  width: 51px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: var(--font-size-desktop-caption);
+}
+progress {
+  width: 12.125rem;
+  height: var(--spacing-2xs);
+  background-color: var(--color-brand-10);
 }

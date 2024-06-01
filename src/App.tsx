@@ -24,17 +24,59 @@ function App() {
             </div>
 
             <div className="physicalFeatures">
-              <label><img className="weightIcon" src="./public/weight.svg"/> 6.9 kg</label>
+              <label className="tagPhysical">
+                <img className="weightIcon" src="./public/weight.svg" /> 6.9 kg
+              </label>
               <div className="line"></div>
-              <label><img className="rulerIcon" src="./public/ruler.svg"/>0.7 m</label>
+              <label className="tagPhysical">
+                <img className="rulerIcon" src="./public/ruler.svg" />
+                0.7 m
+              </label>
             </div>
+
             <ul className="lista">
-              <li>HP</li>
-              <li>ATK</li>
-              <li>DEF</li>
-              <li>SAT</li>
-              <li>SDF</li>
-              <li>SPD</li>
+              <li className="itemList">
+                <label className="itemInfo">
+                  <label className="item">HP</label>
+                  <label>045</label>
+                </label>
+                <progress max="250" value="45"></progress>
+              </li>
+              <li className="itemList">
+                <label className="itemInfo">
+                  <label className="item">ATK</label>
+                  <label>045</label>
+                </label>
+                <progress max="250" value="45"></progress>
+              </li>
+              <li className="itemList">
+                <label className="itemInfo">
+                  <label className="item">DEF</label>
+                  <label>045</label>
+                </label>
+                <progress max="250" value="45"></progress>
+              </li>
+              <li className="itemList">
+                <label className="itemInfo">
+                  <label className="item">SAT</label>
+                  <label>045</label>
+                </label>
+                <progress max="250" value="45"></progress>
+              </li>
+              <li className="itemList">
+                <label className="itemInfo">
+                  <label className="item">SDF</label>
+                  <label>045</label>
+                </label>
+                <progress max="250" value="45"></progress>
+              </li>
+              <li className="itemList">
+                <label className="itemInfo">
+                  <label className="item">SPD</label>
+                  <label>045</label>
+                </label>
+                <progress max="250" value="45"></progress>
+              </li>
             </ul>
           </div>
         </article>
