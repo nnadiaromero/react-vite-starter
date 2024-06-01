@@ -7,44 +7,81 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  
 }
 .features {
-  width: 269px;
-  height: 250px;
   background-color: var(--color-brand-0);
   border-radius: var(--border-radius-l);
   padding: 12px 8px 12px 8px;
-  
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .imgbulbasaur {
   width: 140px;
   height: 140px;
-  position: absolute;
-  top:  0px;
-  right: auto;
-  margin: 50px 72px 210px 73px;
+  /* position: absolute; */
+  margin-top: -100px;
+  margin-left: auto;
+  margin-right: auto;
+
+  /* margin: 50px 72px 210px 73px; */
 }
 .name {
   font-size: var(--font-size-desktop-headline);
   color: var(--color-brand-0);
   margin-top: 0px;
-  
-
 }
 .numero {
   font-size: var(--font-size-desktop-subheadline);
   color: rgba(255, 255, 255, 50%);
   margin-top: 0px;
-
 }
 .titles {
-    display: flex;
-    justify-content: space-between;
-    padding: 0px var(--spacing-xs) 0px var(--spacing-xs);
-    margin: 0px;
-    align-items: center;
-  
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  padding: 0px var(--spacing-xs) 0px var(--spacing-xs);
+  margin: 0px;
+  align-items: center;
+  font-weight: 600;
+}
+.tags {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-desktop-caption);
+  color: var(--color-brand-0);
+}
+
+.tag {
+  background-color: var(--color-brand-20);
+
+  padding: var(--spacing-3xs) var(--spacing-xs) var(--spacing-3xs)
+    var(--spacing-xs);
+
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2xs);
+  border-radius: 100px;
+}
+
+.tag.grass {
+  background-color: var(--color-type-grass);
+}
+.tag.poison {
+  background-color: var(--color-type-poison);
+}
+.tagIcon {
+  width: 16px;
+  height: 16px;
+}
+.physicalFeatures {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-m);
+  font-size: var(--font-size-desktop-caption)
+}
+.line {
+  background-color: var(--color-brand-10);
+  height: var(--spa);
+  width: 1px;
+}
