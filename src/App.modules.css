@@ -1,6 +1,6 @@
 .bulbasaur {
-  width: 285px;
-  height: 400px;
+  width: 269px;
+  height: 384px;
   background-color: var(--color-type-grass);
   border-radius: var(--border-radius-xl);
   padding: 8px;
@@ -117,8 +117,9 @@
   font-weight: 400;
   font-size: var(--font-size-desktop-caption);
 }
-progress {
+.progress {
   width: 12.125rem;
   height: var(--spacing-2xs);
   background-color: var(--color-brand-10);
+  border-radius: 30px;
 }

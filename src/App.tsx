@@ -40,42 +40,42 @@ function App() {
                   <label className="item">HP</label>
                   <label>045</label>
                 </label>
-                <progress max="250" value="45"></progress>
+                <progress className="progress" max="250" value="45"></progress>
               </li>
               <li className="itemList">
                 <label className="itemInfo">
                   <label className="item">ATK</label>
                   <label>045</label>
                 </label>
-                <progress max="250" value="45"></progress>
+                <progress className="progress" max="250" value="45"></progress>
               </li>
               <li className="itemList">
                 <label className="itemInfo">
                   <label className="item">DEF</label>
                   <label>045</label>
                 </label>
-                <progress max="250" value="45"></progress>
+                <progress className="progress" max="250" value="45"></progress>
               </li>
               <li className="itemList">
                 <label className="itemInfo">
                   <label className="item">SAT</label>
                   <label>045</label>
                 </label>
-                <progress max="250" value="45"></progress>
+                <progress className="progress" max="250" value="45"></progress>
               </li>
               <li className="itemList">
                 <label className="itemInfo">
                   <label className="item">SDF</label>
                   <label>045</label>
                 </label>
-                <progress max="250" value="45"></progress>
+                <progress className="progress" max="250" value="45"></progress>
               </li>
               <li className="itemList">
                 <label className="itemInfo">
                   <label className="item">SPD</label>
                   <label>045</label>
                 </label>
-                <progress max="250" value="45"></progress>
+                <progress className="progress" max="250" value="45"></progress>
               </li>
             </ul>
           </div>
