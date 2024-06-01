@@ -5,7 +5,7 @@ function App() {
     <main>
       <section className="cards">
         <article className="bulbasaur">
-          <img className="imgbulbasaur" src="bulbasaur.png" />
+          {/* <img className="imgbulbasaur" src="bulbasaur.png" /> */}
 
           <label className="titles">
             <h2 className="name">Bulbasaur</h2>
@@ -13,8 +13,8 @@ function App() {
           </label>
           <div className="features">
             <div className="natureFeatures">
-              <label>Grass</label>
-              <label>Poison</label>
+              <label className="grass">Grass</label>
+              <label className="poison">Poison</label>
             </div>
             <div className="physicalFeatures">
               <label>6.9 hg</label>
