@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: var(--shadow-s);
 }
 .features {
   background-color: var(--color-brand-0);
@@ -45,6 +46,7 @@
   font-weight: 600;
 }
 .tags {
+  height: 20px;
   display: flex;
   justify-content: center;
   gap: var(--spacing-xs);
@@ -97,9 +99,14 @@
   align-items: center;
 }
 .lista {
+  height: 6.625rem;
   list-style: none;
   margin: 0px;
   padding: 0px;
+  gap: var(--spacing-3xs);
+  display:flex;
+  flex-direction: column;
+  
 }
 .item {
   color: var(--color-brand-30);
@@ -117,9 +124,31 @@
   font-weight: 400;
   font-size: var(--font-size-desktop-caption);
 }
-.progress {
+progress[value] {
   width: 12.125rem;
   height: var(--spacing-2xs);
+
+  appearance: none;
+  -webkit-appearance:none;
+  -moz-appearance: none;/* APARIENCIA BARRA PROGRESO FIREFOX */
+
+  border:none;
+}
+progress[value]::-webkit-progress-bar{
+  background-color: var(--color-brand-10);
+  border-radius: 30px;
+}
+progress[value]::-webkit-progress-value{
+  background-color: var(--color-brand-90);
+  border-radius: 30px;
+}
+
+/* APARIENCIA BARRA PROGRESO FIREFOX */
+progress[value]::-moz-progress-bar{
+  background-color: var(--color-brand-90);
+  border-radius: 30px;
+}
+.progress{
   background-color: var(--color-brand-10);
   border-radius: 30px;
 }

@@ -32,8 +32,10 @@ function App() {
                 <img className="rulerIcon" src="./public/ruler.svg" />
                 0.7 m
               </label>
-            </div>
 
+
+{/*BARRAS DE PROGRESO*/}
+            </div>
             <ul className="lista">
               <li className="itemList">
                 <label className="itemInfo">
@@ -79,6 +81,8 @@ function App() {
               </li>
             </ul>
           </div>
+
+          
         </article>
       </section>
     </main>
