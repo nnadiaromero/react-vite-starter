@@ -1,4 +1,53 @@
 import './App.modules.css'
+type modelo = {
+  name: string
+  number: string
+  image: string
+  stats:  Array<{slug:string; value: number}>
+  tags: string[]
+}
+const pokemon: modelo = {
+  name: 'Bulbasaur',
+  number: "#001",
+  image:
+    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png',
+  stats: [
+    {
+      slug: 'health-points',
+      value: 45,
+    },
+    {
+      slug: 'attack',
+      value: 45,
+    },
+    {
+      slug: 'defense',
+      value: 45,
+    },
+    {
+      slug: 'sat',
+      value: 45,
+    },
+    {
+      slug: 'sdf',
+      value: 45,
+    },
+    {
+      slug: 'speed',
+      value: 45,
+    },
+  ],
+  tags: []
+}
+
+type statsLista ={
+  [key:string]: string
+}
+const statName: statsLista = {
+  'health-points': 'HP',
+  'attack': "ATK",
+  
+}
 
 function App() {
   return (
@@ -6,11 +55,11 @@ function App() {
       <section className="cards">
         <article className="bulbasaur">
           <label className="titles">
-            <h2 className="name">Bulbasaur</h2>
-            <h3 className="numero">#001</h3>
+            <h2 className="name">{pokemon.name}</h2>
+            <h3 className="numero">{pokemon.number}</h3>
           </label>
           <div className="features">
-            <img className="imgbulbasaur" src="bulbasaur.png" />
+            <img className="imgbulbasaur" src={pokemon.image} />
 
             <div className="tags">
               <label className="tag grass">
@@ -33,20 +82,21 @@ function App() {
                 0.7 m
               </label>
 
-
-{/*BARRAS DE PROGRESO*/}
+              {/*BARRAS DE PROGRESO*/}
             </div>
             <ul className="lista">
               <li className="itemList">
                 <label className="itemInfo">
-                  <label className="item">HP</label>
-                  <label>045</label>
+                  <label className="item">
+                    {statName[pokemon.stats[0].slug]}
+                  </label>
+                  <label>{statName[pokemon.stats[0].value]}</label>
                 </label>
                 <progress className="progress" max="250" value="45"></progress>
               </li>
               <li className="itemList">
                 <label className="itemInfo">
-                  <label className="item">ATK</label>
+                  <label className="item">{statName[pokemon.stats[1].slug]}</label>
                   <label>045</label>
                 </label>
                 <progress className="progress" max="250" value="45"></progress>
@@ -81,8 +131,6 @@ function App() {
               </li>
             </ul>
           </div>
-
-          
         </article>
       </section>
     </main>
