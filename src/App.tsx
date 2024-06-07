@@ -1,5 +1,8 @@
 import './App.modules.css'
-type modelo = {
+import { Header } from './header/header'
+import { SearchBar } from './searchbar/searchbar'
+
+type Pokemon = {
   name: string
   number: string
   image: string
@@ -7,7 +10,7 @@ type modelo = {
   physicalFeatures: { weight: string; measure: string }
   stats: Array<{ slug: string; value: string }>
 }
-const pokemon: modelo = {
+const bulbasaur: Pokemon = {
   name: 'Bulbasaur',
   number: '#001',
   image:
@@ -63,39 +66,38 @@ const statName: statsLista = {
 function App() {
   return (
     <>
-      <header>Pokédex</header>
-      <input type="text"  placeholder="Search a Pokémon..."></input>
-      <input type="submit" value=""></input>
+      <Header />
+      <SearchBar/>
       <main>
         <section className="cards">
           <article className="bulbasaur">
             <label className="titles">
-              <h2 className="name">{pokemon.name}</h2>
-              <h3 className="numero">{pokemon.number}</h3>
+              <h2 className="name">{bulbasaur.name}</h2>
+              <h3 className="numero">{bulbasaur.number}</h3>
             </label>
             <div className="features">
-              <img className="imgbulbasaur" src={pokemon.image} />
+              <img className="imgbulbasaur" src={bulbasaur.image} />
 
               <div className="tags">
                 <label className="tag grass">
                   <img className="tagIcon" src="grass.svg" />
-                  {pokemon.tags.tagCharacter}
+                  {bulbasaur.tags.tagCharacter}
                 </label>
                 <label className="tag poison">
                   <img className="tagIcon" src="poison.svg" />
-                  {pokemon.tags.tagWeapon}
+                  {bulbasaur.tags.tagWeapon}
                 </label>
               </div>
 
               <div className="physicalFeatures">
                 <label className="tagPhysical">
                   <img className="weightIcon" src="./public/weight.svg" />
-                  {pokemon.physicalFeatures.weight}
+                  {bulbasaur.physicalFeatures.weight}
                 </label>
                 <div className="line"></div>
                 <label className="tagPhysical">
                   <img className="rulerIcon" src="./public/ruler.svg" />
-                  {pokemon.physicalFeatures.measure}
+                  {bulbasaur.physicalFeatures.measure}
                 </label>
 
                 {/*BARRAS DE PROGRESO*/}
@@ -104,9 +106,9 @@ function App() {
                 <li className="itemList">
                   <label className="itemInfo">
                     <label className="item">
-                      {statName[pokemon.stats[0].slug]}
+                      {statName[bulbasaur.stats[0].slug]}
                     </label>
-                    <label>{pokemon.stats[0].value.padStart(3, '0')}</label>
+                    <label>{bulbasaur.stats[0].value.padStart(3, '0')}</label>
                   </label>
                   <progress
                     className="progress"
@@ -117,9 +119,9 @@ function App() {
                 <li className="itemList">
                   <label className="itemInfo">
                     <label className="item">
-                      {statName[pokemon.stats[1].slug]}
+                      {statName[bulbasaur.stats[1].slug]}
                     </label>
-                    <label>{pokemon.stats[1].value.padStart(3, '0')}</label>
+                    <label>{bulbasaur.stats[1].value.padStart(3, '0')}</label>
                   </label>
                   <progress
                     className="progress"
@@ -130,9 +132,9 @@ function App() {
                 <li className="itemList">
                   <label className="itemInfo">
                     <label className="item">
-                      {statName[pokemon.stats[2].slug]}
+                      {statName[bulbasaur.stats[2].slug]}
                     </label>
-                    <label>{pokemon.stats[2].value.padStart(3, '0')}</label>
+                    <label>{bulbasaur.stats[2].value.padStart(3, '0')}</label>
                   </label>
                   <progress
                     className="progress"
@@ -143,9 +145,9 @@ function App() {
                 <li className="itemList">
                   <label className="itemInfo">
                     <label className="item">
-                      {statName[pokemon.stats[3].slug]}
+                      {statName[bulbasaur.stats[3].slug]}
                     </label>
-                    <label>{pokemon.stats[3].value.padStart(3, '0')}</label>
+                    <label>{bulbasaur.stats[3].value.padStart(3, '0')}</label>
                   </label>
                   <progress
                     className="progress"
@@ -156,9 +158,9 @@ function App() {
                 <li className="itemList">
                   <label className="itemInfo">
                     <label className="item">
-                      {statName[pokemon.stats[4].slug]}
+                      {statName[bulbasaur.stats[4].slug]}
                     </label>
-                    <label>{pokemon.stats[4].value.padStart(3, '0')}</label>
+                    <label>{bulbasaur.stats[4].value.padStart(3, '0')}</label>
                   </label>
                   <progress
                     className="progress"
@@ -169,9 +171,9 @@ function App() {
                 <li className="itemList">
                   <label className="itemInfo">
                     <label className="item">
-                      {statName[pokemon.stats[5].slug]}
+                      {statName[bulbasaur.stats[5].slug]}
                     </label>
-                    <label>{pokemon.stats[5].value.padStart(3, '0')}</label>
+                    <label>{bulbasaur.stats[5].value.padStart(3, '0')}</label>
                   </label>
                   <progress
                     className="progress"

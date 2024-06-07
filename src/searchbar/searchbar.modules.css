@@ -1,0 +1,16 @@
+.buscador{
+    margin: var(--spacing-4xl);
+    gap: var(--spacing-m);
+}
+.barra{
+    border: 1px solid var(--color-brand-30);
+    width: 600px;
+    height: 48px;
+    border-radius: var(--border-radius-s);
+    background-color: var(--color-brand-10);
+    padding: 0px var(--spacing-m) 0px var(--spacing-m);
+
+}
+.lupa{
+    position: relative;
+}
