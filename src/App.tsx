@@ -2,55 +2,156 @@ import './App.modules.css'
 import { Header } from './header/header'
 import { SearchBar } from './searchbar/searchbar'
 import { Footer } from './footer/footer'
+import { useState, useEffect } from 'react'
 
 type Pokemon = {
+  abilities: string[]
+  base_experience: number
+  cries: string
+  forms: string[]
+  game_indices: string[]
+  height: number
+  held_items: string[]
+  id: number
+  is_default: boolean
+  location_area_encounters: string
+  moves: string[]
   name: string
-  number: string
-  image: string
-  tags: { tagCharacter: string; tagWeapon: string }
-  physicalFeatures: { weight: string; measure: string }
-  stats: Array<{ slug: string; value: string }>
-}
-const bulbasaur: Pokemon = {
-  name: 'Bulbasaur',
-  number: '#001',
-  image:
-    'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png',
-  tags: {
-    tagCharacter: 'Grass',
-    tagWeapon: 'Poison',
-  },
-  physicalFeatures: {
-    weight: '6.9 kg',
-    measure: '0.7 m',
-  },
+  order: number
+  past_abilities: string[]
+  past_types: string[]
+  species: { name: string; url: string }
+  sprites: {
+    back_default: string
+    back_female: string
+    back_shiny: string
+    back_shiny_female: string
+    front_default: string
+    front_female: string
+    front_shiny: string
+    front_shiny_female: string
+    other: {
+      dream_world: string
+      home: string
+      'official-artwork': { front_default: string; front_shiny: string }
+    ;showdown:string;}
+    versions:string;
+  }
   stats: [
     {
-      slug: 'health-points',
-      value: '45',
+    base_stat: number,
+    effort: number,
+    stat: {
+    name: string,
+    url: string
+    }
     },
     {
-      slug: 'attack',
-      value: '45',
+    base_stat: number,
+    effort: number,
+    stat: {
+    name: string,
+    url: string
+    }
     },
     {
-      slug: 'defense',
-      value: '45',
+    base_stat: number,
+    effort: number,
+    stat: {
+    name: string,
+    url: string
+    }
     },
     {
-      slug: 'sat',
-      value: '45',
+    base_stat: number,
+    effort: number,
+    stat: {
+    name: string,
+    url: string
+    }
     },
     {
-      slug: 'sdf',
-      value: '45',
+    base_stat: number,
+    effort: number,
+    stat: {
+    name: string,
+    url: string
+    }
     },
     {
-      slug: 'speed',
-      value: '45',
+    base_stat: number,
+    effort: number,
+    stat: {
+    name: string,
+    url: string
+    }
+    }
+    ],
+  types: [
+    {
+    slot: number,
+    type: {
+      name: string,
+      url: string
+    }
     },
-  ],
+    {
+    slot: number,
+    type: {
+      name: string,
+      url: string
+      }    
+    }
+    ],
+  weight: number
 }
+// name: string
+// number: string
+// image: string
+// tags: { tagCharacter: string; tagWeapon: string }
+// physicalFeatures: { weight: string; measure: string }
+// stats: Array<{ slug: string; value: string }>
+// }
+// const bulbasaur: Pokemon = {
+//   name: 'Bulbasaur',
+//   number: '#001',
+//   image:
+//     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png',
+//   tags: {
+//     tagCharacter: 'Grass',
+//     tagWeapon: 'Poison',
+//   },
+//   physicalFeatures: {
+//     weight: '6.9 kg',
+//     measure: '0.7 m',
+//   },
+//   stats: [
+//     {
+//       slug: 'health-points',
+//       value: '45',
+//     },
+//     {
+//       slug: 'attack',
+//       value: '45',
+//     },
+//     {
+//       slug: 'defense',
+//       value: '45',
+//     },
+//     {
+//       slug: 'sat',
+//       value: '45',
+//     },
+//     {
+//       slug: 'sdf',
+//       value: '45',
+//     },
+//     {
+//       slug: 'speed',
+//       value: '45',
+//     },
+//   ],
+// }
 
 type statsLista = {
   [key: string]: string
@@ -65,6 +166,22 @@ const statName: statsLista = {
 }
 
 function App() {
+  const [bulbasaur, setBulbasur] = useState<Pokemon>()
+
+  useEffect(() => {
+    fetch('https://pokeapi.co/api/v2/pokemon/1/')
+      .then(response => {
+        return response.json()
+      })
+      .then(pokemons => {
+        setBulbasur(pokemons)
+      })
+  }, [])
+
+  if (bulbasaur === undefined) {
+    return <div>Cargando...</div>
+  }
+
   return (
     <>
       <Header />
@@ -75,31 +192,31 @@ function App() {
             <article className="bulbasaur">
               <label className="titles">
                 <h2 className="name">{bulbasaur.name}</h2>
-                <h3 className="numero">{bulbasaur.number}</h3>
+                <h3 className="numero">{bulbasaur.id}</h3>
               </label>
               <div className="features">
-                <img className="imgbulbasaur" src={bulbasaur.image} />
+                <img className="imgbulbasaur" src={bulbasaur.sprites.other."official-artwork".front_default} />
 
                 <div className="tags">
                   <label className="tag grass">
                     <img className="tagIcon" src="grass.svg" />
-                    {bulbasaur.tags.tagCharacter}
+                    {bulbasaur.types.type}
                   </label>
                   <label className="tag poison">
                     <img className="tagIcon" src="poison.svg" />
-                    {bulbasaur.tags.tagWeapon}
+                    {bulbasaur.types.type}
                   </label>
                 </div>
 
                 <div className="physicalFeatures">
                   <label className="tagPhysical">
                     <img className="weightIcon" src="./public/weight.svg" />
-                    {bulbasaur.physicalFeatures.weight}
+                    {bulbasaur.weight}
                   </label>
                   <div className="line"></div>
                   <label className="tagPhysical">
                     <img className="rulerIcon" src="./public/ruler.svg" />
-                    {bulbasaur.physicalFeatures.measure}
+                    {bulbasaur.height}
                   </label>
 
                   {/*BARRAS DE PROGRESO*/}
@@ -212,7 +329,6 @@ function App() {
             <img className="pokeball2" src="./public/pokeball2.svg" />
             <div className="bordeblanco"></div>
           </section>
-          
         </main>
       </div>
       <Footer />
