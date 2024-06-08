@@ -33,76 +33,77 @@ type Pokemon = {
     other: {
       dream_world: string
       home: string
-      'official-artwork': { front_default: string; front_shiny: string }
-    ;showdown:string;}
-    versions:string;
+      ['official-artwork']: { front_default: string; front_shiny: string }
+      showdown: string
+    }
+    versions: string
   }
   stats: [
     {
-    base_stat: number,
-    effort: number,
-    stat: {
-    name: string,
-    url: string
-    }
+      base_stat: number
+      effort: number
+      stat: {
+        name: string
+        url: string
+      }
     },
     {
-    base_stat: number,
-    effort: number,
-    stat: {
-    name: string,
-    url: string
-    }
+      base_stat: number
+      effort: number
+      stat: {
+        name: string
+        url: string
+      }
     },
     {
-    base_stat: number,
-    effort: number,
-    stat: {
-    name: string,
-    url: string
-    }
+      base_stat: number
+      effort: number
+      stat: {
+        name: string
+        url: string
+      }
     },
     {
-    base_stat: number,
-    effort: number,
-    stat: {
-    name: string,
-    url: string
-    }
+      base_stat: number
+      effort: number
+      stat: {
+        name: string
+        url: string
+      }
     },
     {
-    base_stat: number,
-    effort: number,
-    stat: {
-    name: string,
-    url: string
-    }
+      base_stat: number
+      effort: number
+      stat: {
+        name: string
+        url: string
+      }
     },
     {
-    base_stat: number,
-    effort: number,
-    stat: {
-    name: string,
-    url: string
-    }
-    }
-    ],
+      base_stat: number
+      effort: number
+      stat: {
+        name: string
+        url: string
+      }
+    },
+  ]
   types: [
     {
-    slot: number,
-    type: {
-      name: string,
-      url: string
-    }
+      slot: number
+      type: {
+        name: string
+        url: string
+      }
     },
     {
-    slot: number,
-    type: {
-      name: string,
-      url: string
-      }    
-    }
-    ],
+      slot: number
+      type: {
+        name: string
+        url: string
+      }
+    },
+  ]
   weight: number
 }
 // name: string
@@ -157,11 +158,11 @@ type statsLista = {
   [key: string]: string
 }
 const statName: statsLista = {
-  'health-points': 'HP',
+  'hp': 'HP',
   attack: 'ATK',
   defense: 'DEF',
-  sat: 'SAT',
-  sdf: 'SDF',
+  "special-attack": 'SAT',
+  "special-defense": 'SDF',
   speed: 'SPD',
 }
 
@@ -192,31 +193,39 @@ function App() {
             <article className="bulbasaur">
               <label className="titles">
                 <h2 className="name">{bulbasaur.name}</h2>
-                <h3 className="numero">{bulbasaur.id}</h3>
+                <h3 className="numero">#{bulbasaur.id.toString().padStart(3, '0')}</h3>
+                    {/*.padStart(3, '0')===> para que sean tres dígitos empezando por 0*/}
+
               </label>
               <div className="features">
-                <img className="imgbulbasaur" src={bulbasaur.sprites.other."official-artwork".front_default} />
+                <img
+                  className="imgbulbasaur"
+                  src={
+                    bulbasaur.sprites.other["official-artwork"].front_default
+                  }
+                />
 
+                {/*hacer un map que cada elemento devuelva esto:*/}
                 <div className="tags">
                   <label className="tag grass">
-                    <img className="tagIcon" src="grass.svg" />
-                    {bulbasaur.types.type}
+                    <img className="tagIcon" src="grass.svg" />{bulbasaur.types[0].type.name}
+                    
                   </label>
                   <label className="tag poison">
                     <img className="tagIcon" src="poison.svg" />
-                    {bulbasaur.types.type}
+                    {bulbasaur.types[1].type.name}
                   </label>
                 </div>
-
+                {/**/}
                 <div className="physicalFeatures">
                   <label className="tagPhysical">
                     <img className="weightIcon" src="./public/weight.svg" />
-                    {bulbasaur.weight}
+                    {bulbasaur.weight/10} kg
                   </label>
                   <div className="line"></div>
                   <label className="tagPhysical">
                     <img className="rulerIcon" src="./public/ruler.svg" />
-                    {bulbasaur.height}
+                    {bulbasaur.height/10} m
                   </label>
 
                   {/*BARRAS DE PROGRESO*/}
@@ -225,79 +234,81 @@ function App() {
                   <li className="itemList">
                     <label className="itemInfo">
                       <label className="item">
-                        {statName[bulbasaur.stats[0].slug]}
+                        {statName[bulbasaur.stats[0].stat.name]}
                       </label>
-                      <label>{bulbasaur.stats[0].value.padStart(3, '0')}</label>
+                      <label>{bulbasaur.stats[0].base_stat.toString().padStart(3, '0')}</label>
                     </label>
                     <progress
                       className="progress"
                       max="250"
-                      value="45"
+                      value={bulbasaur.stats[0].base_stat}
                     ></progress>
                   </li>
                   <li className="itemList">
                     <label className="itemInfo">
                       <label className="item">
-                        {statName[bulbasaur.stats[1].slug]}
+                        {statName[bulbasaur.stats[1].stat.name]}
                       </label>
-                      <label>{bulbasaur.stats[1].value.padStart(3, '0')}</label>
+                      <label>{bulbasaur.stats[1].base_stat.toString().padStart(3, '0')}</label>
                     </label>
                     <progress
                       className="progress"
                       max="250"
-                      value="45"
+                      value={bulbasaur.stats[1].base_stat}
                     ></progress>
                   </li>
                   <li className="itemList">
                     <label className="itemInfo">
                       <label className="item">
-                        {statName[bulbasaur.stats[2].slug]}
+                        {statName[bulbasaur.stats[2].stat.name]}
                       </label>
-                      <label>{bulbasaur.stats[2].value.padStart(3, '0')}</label>
+                      <label>{bulbasaur.stats[2].base_stat.toString().padStart(3, '0')}</label>
                     </label>
                     <progress
                       className="progress"
                       max="250"
-                      value="45"
+                      value={bulbasaur.stats[2].base_stat}
                     ></progress>
                   </li>
                   <li className="itemList">
                     <label className="itemInfo">
                       <label className="item">
-                        {statName[bulbasaur.stats[3].slug]}
+                        {statName[bulbasaur.stats[3].stat.name]}
                       </label>
-                      <label>{bulbasaur.stats[3].value.padStart(3, '0')}</label>
+                      <label>{bulbasaur.stats[3].base_stat.toString().padStart(3, '0')}</label>
+                      {/*.padStart(3, '0')===> para que sean tres dígitos empezando por 0*/}
+
                     </label>
                     <progress
                       className="progress"
                       max="250"
-                      value="45"
+                      value={bulbasaur.stats[3].base_stat}
                     ></progress>
                   </li>
                   <li className="itemList">
                     <label className="itemInfo">
                       <label className="item">
-                        {statName[bulbasaur.stats[4].slug]}
+                        {statName[bulbasaur.stats[4].stat.name]}
                       </label>
-                      <label>{bulbasaur.stats[4].value.padStart(3, '0')}</label>
+                      <label>{bulbasaur.stats[4].base_stat.toString().padStart(3, '0')}</label>
                     </label>
                     <progress
                       className="progress"
                       max="250"
-                      value="45"
+                      value={bulbasaur.stats[4].base_stat}
                     ></progress>
                   </li>
                   <li className="itemList">
                     <label className="itemInfo">
                       <label className="item">
-                        {statName[bulbasaur.stats[5].slug]}
+                        {statName[bulbasaur.stats[5].stat.name]}
                       </label>
-                      <label>{bulbasaur.stats[5].value.padStart(3, '0')}</label>
+                      <label>{bulbasaur.stats[5].base_stat.toString().padStart(3, '0')  }</label>
                     </label>
                     <progress
                       className="progress"
                       max="250"
-                      value="45"
+                      value={bulbasaur.stats[5].base_stat}
                     ></progress>
                   </li>
                 </ul>
