@@ -1,3 +1,4 @@
+
 .bulbasaur {
   width: 16.813rem;/*269px*/
   height: 24rem; /*384px*/
@@ -152,4 +153,13 @@ progress[value]::-moz-progress-bar{
 .progress{
   background-color: var(--color-brand-10);
   border-radius: 1.875rem;/*30px*/
+}
+section{
+  display:grid;
+  grid-template-columns: repeat(3, 285px);
+  grid-gap:32px;
+}
+.grid{
+  max-width:fit-content;
+  margin:0 auto;
 }

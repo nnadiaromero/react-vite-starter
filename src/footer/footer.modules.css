@@ -1,0 +1,11 @@
+.footer{
+    height: 62px;
+    background-color: var(--color-brand-90);
+    color: var(--color-brand-0);
+    font-size: 12px;
+    font-family: kanit;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+
+}

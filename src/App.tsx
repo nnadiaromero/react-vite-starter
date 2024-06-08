@@ -1,6 +1,7 @@
 import './App.modules.css'
 import { Header } from './header/header'
 import { SearchBar } from './searchbar/searchbar'
+import { Footer } from './footer/footer'
 
 type Pokemon = {
   name: string
@@ -67,125 +68,720 @@ function App() {
   return (
     <>
       <Header />
-      <SearchBar/>
-      <main>
-        <section className="cards">
-          <article className="bulbasaur">
-            <label className="titles">
-              <h2 className="name">{bulbasaur.name}</h2>
-              <h3 className="numero">{bulbasaur.number}</h3>
-            </label>
-            <div className="features">
-              <img className="imgbulbasaur" src={bulbasaur.image} />
+      <SearchBar />
+      <div className="grid">
+      <section>
+        <main>
+          <section className="cards">
+            <article className="bulbasaur">
+              <label className="titles">
+                <h2 className="name">{bulbasaur.name}</h2>
+                <h3 className="numero">{bulbasaur.number}</h3>
+              </label>
+              <div className="features">
+                <img className="imgbulbasaur" src={bulbasaur.image} />
 
-              <div className="tags">
-                <label className="tag grass">
-                  <img className="tagIcon" src="grass.svg" />
-                  {bulbasaur.tags.tagCharacter}
-                </label>
-                <label className="tag poison">
-                  <img className="tagIcon" src="poison.svg" />
-                  {bulbasaur.tags.tagWeapon}
-                </label>
+                <div className="tags">
+                  <label className="tag grass">
+                    <img className="tagIcon" src="grass.svg" />
+                    {bulbasaur.tags.tagCharacter}
+                  </label>
+                  <label className="tag poison">
+                    <img className="tagIcon" src="poison.svg" />
+                    {bulbasaur.tags.tagWeapon}
+                  </label>
+                </div>
+
+                <div className="physicalFeatures">
+                  <label className="tagPhysical">
+                    <img className="weightIcon" src="./public/weight.svg" />
+                    {bulbasaur.physicalFeatures.weight}
+                  </label>
+                  <div className="line"></div>
+                  <label className="tagPhysical">
+                    <img className="rulerIcon" src="./public/ruler.svg" />
+                    {bulbasaur.physicalFeatures.measure}
+                  </label>
+
+                  {/*BARRAS DE PROGRESO*/}
+                </div>
+                <ul className="lista">
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[0].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[0].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[1].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[1].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[2].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[2].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[3].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[3].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[4].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[4].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[5].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[5].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                </ul>
               </div>
+            </article>
+          </section>
+        </main>
+        <main>
+          <section className="cards">
+            <article className="bulbasaur">
+              <label className="titles">
+                <h2 className="name">{bulbasaur.name}</h2>
+                <h3 className="numero">{bulbasaur.number}</h3>
+              </label>
+              <div className="features">
+                <img className="imgbulbasaur" src={bulbasaur.image} />
 
-              <div className="physicalFeatures">
-                <label className="tagPhysical">
-                  <img className="weightIcon" src="./public/weight.svg" />
-                  {bulbasaur.physicalFeatures.weight}
-                </label>
-                <div className="line"></div>
-                <label className="tagPhysical">
-                  <img className="rulerIcon" src="./public/ruler.svg" />
-                  {bulbasaur.physicalFeatures.measure}
-                </label>
+                <div className="tags">
+                  <label className="tag grass">
+                    <img className="tagIcon" src="grass.svg" />
+                    {bulbasaur.tags.tagCharacter}
+                  </label>
+                  <label className="tag poison">
+                    <img className="tagIcon" src="poison.svg" />
+                    {bulbasaur.tags.tagWeapon}
+                  </label>
+                </div>
 
-                {/*BARRAS DE PROGRESO*/}
+                <div className="physicalFeatures">
+                  <label className="tagPhysical">
+                    <img className="weightIcon" src="./public/weight.svg" />
+                    {bulbasaur.physicalFeatures.weight}
+                  </label>
+                  <div className="line"></div>
+                  <label className="tagPhysical">
+                    <img className="rulerIcon" src="./public/ruler.svg" />
+                    {bulbasaur.physicalFeatures.measure}
+                  </label>
+
+                  {/*BARRAS DE PROGRESO*/}
+                </div>
+                <ul className="lista">
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[0].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[0].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[1].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[1].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[2].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[2].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[3].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[3].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[4].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[4].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[5].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[5].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                </ul>
               </div>
-              <ul className="lista">
-                <li className="itemList">
-                  <label className="itemInfo">
-                    <label className="item">
-                      {statName[bulbasaur.stats[0].slug]}
-                    </label>
-                    <label>{bulbasaur.stats[0].value.padStart(3, '0')}</label>
+            </article>
+          </section>
+        </main>
+        <main>
+          <section className="cards">
+            <article className="bulbasaur">
+              <label className="titles">
+                <h2 className="name">{bulbasaur.name}</h2>
+                <h3 className="numero">{bulbasaur.number}</h3>
+              </label>
+              <div className="features">
+                <img className="imgbulbasaur" src={bulbasaur.image} />
+
+                <div className="tags">
+                  <label className="tag grass">
+                    <img className="tagIcon" src="grass.svg" />
+                    {bulbasaur.tags.tagCharacter}
                   </label>
-                  <progress
-                    className="progress"
-                    max="250"
-                    value="45"
-                  ></progress>
-                </li>
-                <li className="itemList">
-                  <label className="itemInfo">
-                    <label className="item">
-                      {statName[bulbasaur.stats[1].slug]}
-                    </label>
-                    <label>{bulbasaur.stats[1].value.padStart(3, '0')}</label>
+                  <label className="tag poison">
+                    <img className="tagIcon" src="poison.svg" />
+                    {bulbasaur.tags.tagWeapon}
                   </label>
-                  <progress
-                    className="progress"
-                    max="250"
-                    value="45"
-                  ></progress>
-                </li>
-                <li className="itemList">
-                  <label className="itemInfo">
-                    <label className="item">
-                      {statName[bulbasaur.stats[2].slug]}
-                    </label>
-                    <label>{bulbasaur.stats[2].value.padStart(3, '0')}</label>
+                </div>
+
+                <div className="physicalFeatures">
+                  <label className="tagPhysical">
+                    <img className="weightIcon" src="./public/weight.svg" />
+                    {bulbasaur.physicalFeatures.weight}
                   </label>
-                  <progress
-                    className="progress"
-                    max="250"
-                    value="45"
-                  ></progress>
-                </li>
-                <li className="itemList">
-                  <label className="itemInfo">
-                    <label className="item">
-                      {statName[bulbasaur.stats[3].slug]}
-                    </label>
-                    <label>{bulbasaur.stats[3].value.padStart(3, '0')}</label>
+                  <div className="line"></div>
+                  <label className="tagPhysical">
+                    <img className="rulerIcon" src="./public/ruler.svg" />
+                    {bulbasaur.physicalFeatures.measure}
                   </label>
-                  <progress
-                    className="progress"
-                    max="250"
-                    value="45"
-                  ></progress>
-                </li>
-                <li className="itemList">
-                  <label className="itemInfo">
-                    <label className="item">
-                      {statName[bulbasaur.stats[4].slug]}
+
+                  {/*BARRAS DE PROGRESO*/}
+                </div>
+                <ul className="lista">
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[0].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[0].value.padStart(3, '0')}</label>
                     </label>
-                    <label>{bulbasaur.stats[4].value.padStart(3, '0')}</label>
-                  </label>
-                  <progress
-                    className="progress"
-                    max="250"
-                    value="45"
-                  ></progress>
-                </li>
-                <li className="itemList">
-                  <label className="itemInfo">
-                    <label className="item">
-                      {statName[bulbasaur.stats[5].slug]}
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[1].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[1].value.padStart(3, '0')}</label>
                     </label>
-                    <label>{bulbasaur.stats[5].value.padStart(3, '0')}</label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[2].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[2].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[3].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[3].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[4].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[4].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[5].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[5].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </section>
+        </main>
+        <main>
+          <section className="cards">
+            <article className="bulbasaur">
+              <label className="titles">
+                <h2 className="name">{bulbasaur.name}</h2>
+                <h3 className="numero">{bulbasaur.number}</h3>
+              </label>
+              <div className="features">
+                <img className="imgbulbasaur" src={bulbasaur.image} />
+
+                <div className="tags">
+                  <label className="tag grass">
+                    <img className="tagIcon" src="grass.svg" />
+                    {bulbasaur.tags.tagCharacter}
                   </label>
-                  <progress
-                    className="progress"
-                    max="250"
-                    value="45"
-                  ></progress>
-                </li>
-              </ul>
-            </div>
-          </article>
-        </section>
-      </main>
+                  <label className="tag poison">
+                    <img className="tagIcon" src="poison.svg" />
+                    {bulbasaur.tags.tagWeapon}
+                  </label>
+                </div>
+
+                <div className="physicalFeatures">
+                  <label className="tagPhysical">
+                    <img className="weightIcon" src="./public/weight.svg" />
+                    {bulbasaur.physicalFeatures.weight}
+                  </label>
+                  <div className="line"></div>
+                  <label className="tagPhysical">
+                    <img className="rulerIcon" src="./public/ruler.svg" />
+                    {bulbasaur.physicalFeatures.measure}
+                  </label>
+
+                  {/*BARRAS DE PROGRESO*/}
+                </div>
+                <ul className="lista">
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[0].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[0].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[1].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[1].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[2].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[2].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[3].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[3].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[4].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[4].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[5].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[5].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </section>
+        </main>
+        <main>
+          <section className="cards">
+            <article className="bulbasaur">
+              <label className="titles">
+                <h2 className="name">{bulbasaur.name}</h2>
+                <h3 className="numero">{bulbasaur.number}</h3>
+              </label>
+              <div className="features">
+                <img className="imgbulbasaur" src={bulbasaur.image} />
+
+                <div className="tags">
+                  <label className="tag grass">
+                    <img className="tagIcon" src="grass.svg" />
+                    {bulbasaur.tags.tagCharacter}
+                  </label>
+                  <label className="tag poison">
+                    <img className="tagIcon" src="poison.svg" />
+                    {bulbasaur.tags.tagWeapon}
+                  </label>
+                </div>
+
+                <div className="physicalFeatures">
+                  <label className="tagPhysical">
+                    <img className="weightIcon" src="./public/weight.svg" />
+                    {bulbasaur.physicalFeatures.weight}
+                  </label>
+                  <div className="line"></div>
+                  <label className="tagPhysical">
+                    <img className="rulerIcon" src="./public/ruler.svg" />
+                    {bulbasaur.physicalFeatures.measure}
+                  </label>
+
+                  {/*BARRAS DE PROGRESO*/}
+                </div>
+                <ul className="lista">
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[0].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[0].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[1].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[1].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[2].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[2].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[3].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[3].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[4].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[4].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[5].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[5].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </section>
+        </main>
+        <main>
+          <section className="cards">
+            <article className="bulbasaur">
+              <label className="titles">
+                <h2 className="name">{bulbasaur.name}</h2>
+                <h3 className="numero">{bulbasaur.number}</h3>
+              </label>
+              <div className="features">
+                <img className="imgbulbasaur" src={bulbasaur.image} />
+
+                <div className="tags">
+                  <label className="tag grass">
+                    <img className="tagIcon" src="grass.svg" />
+                    {bulbasaur.tags.tagCharacter}
+                  </label>
+                  <label className="tag poison">
+                    <img className="tagIcon" src="poison.svg" />
+                    {bulbasaur.tags.tagWeapon}
+                  </label>
+                </div>
+
+                <div className="physicalFeatures">
+                  <label className="tagPhysical">
+                    <img className="weightIcon" src="./public/weight.svg" />
+                    {bulbasaur.physicalFeatures.weight}
+                  </label>
+                  <div className="line"></div>
+                  <label className="tagPhysical">
+                    <img className="rulerIcon" src="./public/ruler.svg" />
+                    {bulbasaur.physicalFeatures.measure}
+                  </label>
+
+                  {/*BARRAS DE PROGRESO*/}
+                </div>
+                <ul className="lista">
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[0].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[0].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[1].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[1].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[2].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[2].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[3].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[3].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[4].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[4].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                  <li className="itemList">
+                    <label className="itemInfo">
+                      <label className="item">
+                        {statName[bulbasaur.stats[5].slug]}
+                      </label>
+                      <label>{bulbasaur.stats[5].value.padStart(3, '0')}</label>
+                    </label>
+                    <progress
+                      className="progress"
+                      max="250"
+                      value="45"
+                    ></progress>
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </section>
+        </main>
+      </section>
+      </div>
+      <Footer />
     </>
   )
 }

@@ -18,11 +18,11 @@
   gap: 16px;
 }
 .lupa {
-  position: relative;
   width: 1.5rem;
   height: 1.5rem;
 }
 .text {
+  width: 600px; 
   border: none;
   background-color: transparent;
   font-size: 16px;
