@@ -167,6 +167,7 @@ const statName: statsLista = {
 }
 
 function App() {
+
   const [bulbasaur, setBulbasur] = useState<Pokemon>()
 
   useEffect(() => {
@@ -194,8 +195,6 @@ function App() {
               <label className="titles">
                 <h2 className="name">{bulbasaur.name}</h2>
                 <h3 className="numero">#{bulbasaur.id.toString().padStart(3, '0')}</h3>
-                    {/*.padStart(3, '0')===> para que sean tres dígitos empezando por 0*/}
-
               </label>
               <div className="features">
                 <img
@@ -204,8 +203,7 @@ function App() {
                     bulbasaur.sprites.other["official-artwork"].front_default
                   }
                 />
-
-                {/*hacer un map que cada elemento devuelva esto:*/}
+                  {/* NATURALEZA */}
                 <div className="tags">
                   <label className="tag grass">
                     <img className="tagIcon" src="grass.svg" />{bulbasaur.types[0].type.name}
@@ -216,7 +214,8 @@ function App() {
                     {bulbasaur.types[1].type.name}
                   </label>
                 </div>
-                {/**/}
+
+                  {/* PESO Y ALTURA */}
                 <div className="physicalFeatures">
                   <label className="tagPhysical">
                     <img className="weightIcon" src="./public/weight.svg" />
@@ -228,7 +227,7 @@ function App() {
                     {bulbasaur.height/10} m
                   </label>
 
-                  {/*BARRAS DE PROGRESO*/}
+                  {/* BARRAS DE PROGRESO */}
                 </div>
                 <ul className="lista">
                   <li className="itemList">
