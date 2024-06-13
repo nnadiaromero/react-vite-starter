@@ -12,18 +12,20 @@ import { Pokemon } from '../App'
 export function Card({ pokemon }: Pokemon) {
   return (
     <article
-      className="bulbasaur"
+      className="pokeCard"
       key={pokemon.id}
       //COLORES DE LAS TARJETAS!!!
-      style={{ backgroundColor: `var(--color-type-${pokemon.types[0].type.name})` }}
+      style={{
+        backgroundColor: `var(--color-type-${pokemon.types[0].type.name})`,
+      }}
     >
       <label className="titles">
         <h2 className="name">{pokemon.name}</h2>
-        <h3 className="numero">#{pokemon.id.toString().padStart(3, '0')}</h3>
+        <h3 className="numeroIdPok">#{pokemon.id.toString().padStart(3, '0')}</h3>
       </label>
-      <div className="features">
+      <div className="featuresPokemon">
         <img
-          className="imgbulbasaur"
+          className="imagePokemon"
           src={pokemon.sprites.other['official-artwork'].front_default}
         />
         {/* NATURALEZA */}
@@ -42,7 +44,12 @@ export function Card({ pokemon }: Pokemon) {
                   | undefined
               }
             }) => (
-              <label className={`tag ${type.type.name}`}>
+              <label
+                className={`tag ${type.type.name}`}
+                style={{
+                  backgroundColor: `var(--color-type-${type.type.name})`,
+                }}
+              >
                 <img className="tagIcon" src={`${type.type.name}.svg`} />
                 {type.type.name}
               </label>

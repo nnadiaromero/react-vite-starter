@@ -1,0 +1,184 @@
+.pokeCard {
+  width: 16.813rem; /*269px*/
+  height: 24rem; /*384px*/
+  background-color: var(--color-type-grass);
+  border-radius: var(--border-radius-xl);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-s);
+}
+.featuresPokemon {
+  background-color: var(--color-brand-0);
+  border-radius: var(--border-radius-l);
+  padding: var(--spacing-s) var(--spacing-xs) var(--spacing-s) var(--spacing-xs);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+.imagePokemon {
+  width: 8.75rem; /*140px*/
+  height: 8.75rem; /*140px*/
+  margin-top: -5.938rem; /*-95px*/
+  margin-left: auto;
+  margin-right: auto;
+}
+.name {
+  font-size: var(--font-size-desktop-headline);
+  color: var(--color-brand-0);
+  margin-top: 0rem;
+  text-transform: capitalize;
+}
+.numeroIdPok {
+  font-size: var(--font-size-desktop-subheadline);
+  color: rgba(255, 255, 255, 50%);
+  margin-top: 0rem;
+}
+.titles {
+  /* height: 2rem; */
+  display: flex;
+  justify-content: space-between;
+  padding: 0rem var(--spacing-xs) 0rem var(--spacing-xs);
+  margin: 0rem;
+
+  /* margin: 0.5rem 0rem 0rem 0rem; */
+
+  align-items: center;
+  font-weight: 600;
+}
+.tags {
+  height: 1.25rem; /*20px*/
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-desktop-caption);
+  color: var(--color-brand-0);
+  text-transform: capitalize;
+}
+
+.tag {
+  background-color: var(--color-brand-20);
+
+  padding: var(--spacing-3xs) var(--spacing-xs) var(--spacing-3xs)
+    var(--spacing-xs);
+
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2xs);
+  border-radius: 6.25rem; /*100px*/
+}
+
+.tagIcon {
+  width: 1rem;
+  height: 1rem;
+}
+.physicalFeatures {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-m);
+  font-size: var(--font-size-desktop-caption);
+  height: 2rem;
+}
+.line {
+  background-color: var(--color-brand-10);
+  height: var(--spa);
+  width: 0.063rem; /*1px*/
+}
+
+.weightIcon,
+.rulerIcon {
+  width: 1.25rem;
+  margin-right: var(--spacing-2xs);
+}
+.tagPhysical {
+  display: flex;
+  align-items: center;
+}
+.lista {
+  height: 6.625rem;
+  list-style: none;
+  margin: 0rem;
+  padding: 0rem;
+  gap: var(--spacing-3xs);
+  display: flex;
+  flex-direction: column;
+}
+.item {
+  color: var(--color-brand-30);
+}
+.itemList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 1rem;
+}
+.itemInfo {
+  width: 3.188rem; /*51px*/
+  display: flex;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: var(--font-size-desktop-caption);
+}
+progress[value] {
+  width: 12.125rem;
+  height: var(--spacing-2xs);
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none; /* APARIENCIA BARRA PROGRESO FIREFOX */
+
+  border: none;
+}
+progress[value]::-webkit-progress-bar {
+  background-color: var(--color-brand-10);
+  border-radius: 30px;
+}
+progress[value]::-webkit-progress-value {
+  background-color: var(--color-brand-90);
+  border-radius: 30px;
+}
+
+/* APARIENCIA BARRA PROGRESO FIREFOX */
+progress[value]::-moz-progress-bar {
+  background-color: var(--color-brand-90);
+  border-radius: 1.875rem; /*30px*/
+}
+.progress {
+  background-color: var(--color-brand-10);
+  border-radius: 1.875rem; /*30px*/
+}
+.displaygrid {
+  display: grid;
+  grid-template-columns: repeat(3, 285px);
+  grid-gap: 32px;
+}
+.grid {
+  max-width: fit-content;
+  margin: 0 auto;
+}
+
+/*CARTA VACÍA*/
+.emptycard {
+  width: 16.813rem; /*269px*/
+  height: 24rem; /*384px*/
+  background-color: var(--color-brand-10);
+  border-radius: var(--border-radius-xl);
+  padding: 0.5rem;
+  box-shadow: var(--shadow-s);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bordeblanco {
+  border: 8px solid var(--color-brand-0);
+  width: 16.813rem; /*269px*/
+  height: 24rem; /*384px*/
+  border-radius: var(--border-radius-xl);
+  position: absolute;
+}
+.pokeball2 {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+}
