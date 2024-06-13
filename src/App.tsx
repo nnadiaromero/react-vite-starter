@@ -3,9 +3,12 @@ import { Header } from './header/header'
 import { SearchBar } from './searchbar/searchbar'
 import { Footer } from './footer/footer'
 import { useState, useEffect } from 'react'
+import { Card } from './card/card'
 
-type Pokemon = {
+export type Pokemon = {
+  result: string
   abilities: string[]
+  pokemon: any
   base_experience: number
   cries: string
   forms: string[]
@@ -106,6 +109,7 @@ type Pokemon = {
   ]
   weight: number
 }
+
 // name: string
 // number: string
 // image: string
@@ -157,30 +161,68 @@ type Pokemon = {
 type statsLista = {
   [key: string]: string
 }
-const statName: statsLista = {
-  'hp': 'HP',
+
+export const statName: statsLista = {
+  hp: 'HP',
   attack: 'ATK',
   defense: 'DEF',
-  "special-attack": 'SAT',
-  "special-defense": 'SDF',
+  'special-attack': 'SAT',
+  'special-defense': 'SDF',
   speed: 'SPD',
 }
 
 function App() {
+  // const [pokemon, setPokemons] = useState<Pokemon>()
 
-  const [bulbasaur, setBulbasur] = useState<Pokemon>()
+  // useEffect(() => {
+  //   fetch('https://pokeapi.co/api/v2/pokemon/1/')
+  //     .then(response => {
+  //       return response.json()
+  //     })
+  //     .then(pokemons => {
+  //       setPokemons(pokemons)
+  //     })
+  // }, [])
+
+  // if (pokemon === undefined) {
+  //   return <div>Cargando...</div>
+  // }
+
+  const [pokemons, setPokemons] = useState<Pokemon[]>()
+
+  const getPokemons = async () => {
+    // Obtener el listado
+    const response = await fetch(
+      'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151',
+    )
+    //Que el listado se guarde en un archivo .json
+    const jsonResponse = await response.json()
+
+    // console.log(jsonResponse.results)
+
+    // jsonResponse.results.map(result => console.log(result))
+    // const fetchPromises= jsonResponse.results.map(url =>)
+
+
+    const todosPoks = await Promise.all(
+      jsonResponse.results.map(async result => {
+        const pok = await fetch(result.url)
+        return await pok.json()
+      }),
+    )
+    console.log(todosPoks)
+
+    // Obtener los valores de cada uno
+    // const response1 = await fetch('https://pokeapi.co/api/v2/pokemon/1/')
+    // const jsonResponse1 = await response1.json()
+    setPokemons(todosPoks)
+  }
 
   useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon/1/')
-      .then(response => {
-        return response.json()
-      })
-      .then(pokemons => {
-        setBulbasur(pokemons)
-      })
+    getPokemons()
   }, [])
 
-  if (bulbasaur === undefined) {
+  if (pokemons === undefined) {
     return <div>Cargando...</div>
   }
 
@@ -190,155 +232,17 @@ function App() {
       <SearchBar />
       <div className="grid">
         <main className="displaygrid">
-          <section className="cards">
-            <article className="bulbasaur">
-              <label className="titles">
-                <h2 className="name">{bulbasaur.name}</h2>
-                <h3 className="numero">#{bulbasaur.id.toString().padStart(3, '0')}</h3>
-              </label>
-              <div className="features">
-                <img
-                  className="imgbulbasaur"
-                  src={
-                    bulbasaur.sprites.other["official-artwork"].front_default
-                  }
-                />
-                  {/* NATURALEZA */}
-                <div className="tags">
-                  <label className="tag grass">
-                    <img className="tagIcon" src="grass.svg" />{bulbasaur.types[0].type.name}
-                    
-                  </label>
-                  <label className="tag poison">
-                    <img className="tagIcon" src="poison.svg" />
-                    {bulbasaur.types[1].type.name}
-                  </label>
-                </div>
-
-                  {/* PESO Y ALTURA */}
-                <div className="physicalFeatures">
-                  <label className="tagPhysical">
-                    <img className="weightIcon" src="./public/weight.svg" />
-                    {bulbasaur.weight/10} kg
-                  </label>
-                  <div className="line"></div>
-                  <label className="tagPhysical">
-                    <img className="rulerIcon" src="./public/ruler.svg" />
-                    {bulbasaur.height/10} m
-                  </label>
-
-                  {/* BARRAS DE PROGRESO */}
-                </div>
-                <ul className="lista">
-                  <li className="itemList">
-                    <label className="itemInfo">
-                      <label className="item">
-                        {statName[bulbasaur.stats[0].stat.name]}
-                      </label>
-                      <label>{bulbasaur.stats[0].base_stat.toString().padStart(3, '0')}</label>
-                    </label>
-                    <progress
-                      className="progress"
-                      max="250"
-                      value={bulbasaur.stats[0].base_stat}
-                    ></progress>
-                  </li>
-                  <li className="itemList">
-                    <label className="itemInfo">
-                      <label className="item">
-                        {statName[bulbasaur.stats[1].stat.name]}
-                      </label>
-                      <label>{bulbasaur.stats[1].base_stat.toString().padStart(3, '0')}</label>
-                    </label>
-                    <progress
-                      className="progress"
-                      max="250"
-                      value={bulbasaur.stats[1].base_stat}
-                    ></progress>
-                  </li>
-                  <li className="itemList">
-                    <label className="itemInfo">
-                      <label className="item">
-                        {statName[bulbasaur.stats[2].stat.name]}
-                      </label>
-                      <label>{bulbasaur.stats[2].base_stat.toString().padStart(3, '0')}</label>
-                    </label>
-                    <progress
-                      className="progress"
-                      max="250"
-                      value={bulbasaur.stats[2].base_stat}
-                    ></progress>
-                  </li>
-                  <li className="itemList">
-                    <label className="itemInfo">
-                      <label className="item">
-                        {statName[bulbasaur.stats[3].stat.name]}
-                      </label>
-                      <label>{bulbasaur.stats[3].base_stat.toString().padStart(3, '0')}</label>
-                      {/*.padStart(3, '0')===> para que sean tres dígitos empezando por 0*/}
-
-                    </label>
-                    <progress
-                      className="progress"
-                      max="250"
-                      value={bulbasaur.stats[3].base_stat}
-                    ></progress>
-                  </li>
-                  <li className="itemList">
-                    <label className="itemInfo">
-                      <label className="item">
-                        {statName[bulbasaur.stats[4].stat.name]}
-                      </label>
-                      <label>{bulbasaur.stats[4].base_stat.toString().padStart(3, '0')}</label>
-                    </label>
-                    <progress
-                      className="progress"
-                      max="250"
-                      value={bulbasaur.stats[4].base_stat}
-                    ></progress>
-                  </li>
-                  <li className="itemList">
-                    <label className="itemInfo">
-                      <label className="item">
-                        {statName[bulbasaur.stats[5].stat.name]}
-                      </label>
-                      <label>{bulbasaur.stats[5].base_stat.toString().padStart(3, '0')  }</label>
-                    </label>
-                    <progress
-                      className="progress"
-                      max="250"
-                      value={bulbasaur.stats[5].base_stat}
-                    ></progress>
-                  </li>
-                </ul>
-              </div>
-            </article>
+          <section className="cards displaygrid">
+            {pokemons.map(pokemon => (
+              <Card pokemon={pokemon} />
+            ))}
           </section>
 
-          <section className="emptycard">
+          {/*EMPTY CARD */}
+          {/* <section className="emptycard">
             <img className="pokeball2" src="./public/pokeball2.svg" />
             <div className="bordeblanco"></div>
-          </section>
-
-          <section className="emptycard">
-            <img className="pokeball2" src="./public/pokeball2.svg" />
-            <div className="bordeblanco"></div>
-          </section>
-
-          <section className="emptycard">
-            <img className="pokeball2" src="./public/pokeball2.svg" />
-            <div className="bordeblanco"></div>
-          </section>
-
-          <section className="emptycard">
-            <img className="pokeball2" src="./public/pokeball2.svg" />
-            <div className="bordeblanco"></div>
-          </section>
-
-          <section className="emptycard">
-            <img className="pokeball2" src="./public/pokeball2.svg" />
-            <div className="bordeblanco"></div>
-          </section>
+          </section> */}
         </main>
       </div>
       <Footer />

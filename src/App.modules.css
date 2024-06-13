@@ -1,7 +1,7 @@
 .bulbasaur {
   width: 16.813rem; /*269px*/
   height: 24rem; /*384px*/
-  background-color: var(--color-type-grass);
+  background-color:var(--color-type-grass) ;
   border-radius: var(--border-radius-xl);
   padding: 0.5rem;
   display: flex;
