@@ -5,7 +5,27 @@ import { Footer } from './footer/footer'
 import { useState, useEffect } from 'react'
 import { Card } from './card/card'
 
-export type Pokemon = {
+type PokemonType = {
+  slot: number
+  type: {
+    name: string
+    url: string
+  }
+}
+
+type PokemonStat = {
+  base_stat: number
+  effort: number
+  stat: {
+    name: string
+    url: string
+  }
+}
+
+
+
+
+export type PokemonDTO = {
   result: string
   abilities: string[]
   pokemon: any
@@ -14,7 +34,6 @@ export type Pokemon = {
   forms: string[]
   game_indices: string[]
   height: number
-  held_items: string[]
   id: number
   is_default: boolean
   location_area_encounters: string
@@ -41,72 +60,8 @@ export type Pokemon = {
     }
     versions: string
   }
-  stats: [
-    {
-      base_stat: number
-      effort: number
-      stat: {
-        name: string
-        url: string
-      }
-    },
-    {
-      base_stat: number
-      effort: number
-      stat: {
-        name: string
-        url: string
-      }
-    },
-    {
-      base_stat: number
-      effort: number
-      stat: {
-        name: string
-        url: string
-      }
-    },
-    {
-      base_stat: number
-      effort: number
-      stat: {
-        name: string
-        url: string
-      }
-    },
-    {
-      base_stat: number
-      effort: number
-      stat: {
-        name: string
-        url: string
-      }
-    },
-    {
-      base_stat: number
-      effort: number
-      stat: {
-        name: string
-        url: string
-      }
-    },
-  ]
-  types: [
-    {
-      slot: number
-      type: {
-        name: string
-        url: string
-      }
-    },
-    {
-      slot: number
-      type: {
-        name: string
-        url: string
-      }
-    },
-  ]
+  stats: PokemonStat[]
+  types: PokemonType[]
   weight: number
 }
 
@@ -171,6 +126,14 @@ export const statName: statsLista = {
   speed: 'SPD',
 }
 
+type PokemonList = {
+  results: PokemonSimple[]
+}
+
+type PokemonSimple = {
+  url: string
+}
+
 function App() {
   // const [pokemon, setPokemons] = useState<Pokemon>()
 
@@ -188,7 +151,7 @@ function App() {
   //   return <div>Cargando...</div>
   // }
 
-  const [pokemons, setPokemons] = useState<Pokemon[]>()
+  const [pokemons, setPokemons] = useState<PokemonDTO[]>()
 
   const getPokemons = async () => {
     // Obtener el listado
@@ -196,20 +159,19 @@ function App() {
       'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151',
     )
     //Que el listado se guarde en un archivo .json
-    const jsonResponse = await response.json()
+    const jsonResponse: PokemonList = await response.json()
 
     // console.log(jsonResponse.results)
 
     // jsonResponse.results.map(result => console.log(result))
     // const fetchPromises= jsonResponse.results.map(url =>)
 
+    const promesas = jsonResponse.results.map(async result => {
+      const pok = await fetch(result.url)
+      return await pok.json()
+    })
 
-    const todosPoks = await Promise.all(
-      jsonResponse.results.map(async result => {
-        const pok = await fetch(result.url)
-        return await pok.json()
-      }),
-    )
+    const todosPoks = await Promise.all(promesas)
     console.log(todosPoks)
 
     // Obtener los valores de cada uno
@@ -223,7 +185,66 @@ function App() {
   }, [])
 
   if (pokemons === undefined) {
-    return <div>Cargando...</div>
+    return (
+      <div>
+        <>
+          <Header />
+          <SearchBar />
+          <div className="grid">
+            <main className="displaygrid">
+              <section className="cards displaygrid">
+                <section className="emptycard">
+                  <img className="pokeball2" src="./public/pokeball2.svg" />
+                  <div className="bordeblanco"></div>
+                </section>
+              </section>
+              <section className="cards displaygrid">
+                <section className="emptycard">
+                  <img className="pokeball2" src="./public/pokeball2.svg" />
+                  <div className="bordeblanco"></div>
+                </section>
+              </section>
+              <section className="cards displaygrid">
+                <section className="emptycard">
+                  <img className="pokeball2" src="./public/pokeball2.svg" />
+                  <div className="bordeblanco"></div>
+                </section>
+              </section>
+              <section className="cards displaygrid">
+                <section className="emptycard">
+                  <img className="pokeball2" src="./public/pokeball2.svg" />
+                  <div className="bordeblanco"></div>
+                </section>
+              </section>
+              <section className="cards displaygrid">
+                <section className="emptycard">
+                  <img className="pokeball2" src="./public/pokeball2.svg" />
+                  <div className="bordeblanco"></div>
+                </section>
+              </section>
+              <section className="cards displaygrid">
+                <section className="emptycard">
+                  <img className="pokeball2" src="./public/pokeball2.svg" />
+                  <div className="bordeblanco"></div>
+                </section>
+              </section>
+
+              {/*EMPTY CARD */}
+              {/* <section className="emptycard">
+            <img className="pokeball2" src="./public/pokeball2.svg" />
+            <div className="bordeblanco"></div>
+          </section> */}
+            </main>
+          </div>
+          <Footer />
+        </>
+
+        {/* <section className="emptycard">
+            <img className="pokeball2" src="./public/pokeball2.svg" />
+            <div className="bordeblanco"></div>
+          </section> */}
+      </div>
+    )
   }
 
   return (

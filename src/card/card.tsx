@@ -6,10 +6,12 @@ import {
 } from 'react'
 import './card.modules.css'
 import { statName } from '../App'
-import { Pokemon } from '../App'
+import { PokemonDTO } from '../App'
+
+type Props = { pokemon: PokemonDTO }
 
 // Tipar el pokemon
-export function Card({ pokemon }: Pokemon) {
+export const Card: React.FC<Props> = ({ pokemon }) => {
   return (
     <article
       className="pokeCard"
@@ -21,7 +23,9 @@ export function Card({ pokemon }: Pokemon) {
     >
       <label className="titles">
         <h2 className="name">{pokemon.name}</h2>
-        <h3 className="numeroIdPok">#{pokemon.id.toString().padStart(3, '0')}</h3>
+        <h3 className="numeroIdPok">
+          #{pokemon.id.toString().padStart(3, '0')}
+        </h3>
       </label>
       <div className="featuresPokemon">
         <img
