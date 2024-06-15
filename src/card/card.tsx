@@ -1,7 +1,7 @@
-
 import './card.modules.css'
 import { Pokemon } from '../App'
-import { Stats } from './components/stats'
+import { Stats } from './cardComponents/stats/stats'
+import { Types } from './cardComponents/types/types'
 
 type Props = { pokemon: Pokemon }
 
@@ -22,20 +22,11 @@ export const Card: React.FC<Props> = ({ pokemon }) => {
       </label>
       <div className="featuresPokemon">
         <img className="imagePokemon" src={pokemon.picture} />
-        
+
         {/* NATURALEZA */}
         <div className="tags">
           {pokemon.types.map(type => (
-            <label
-              key={type.type.name}
-              className={`tag ${type.type.name}`}
-              style={{
-                backgroundColor: `var(--color-type-${type.type.name})`,
-              }}
-            >
-              <img className="tagIcon" src={`${type.type.name}.svg`} />
-              {type.type.name}
-            </label>
+            <Types type={type} />
           ))}
         </div>
 
@@ -57,7 +48,6 @@ export const Card: React.FC<Props> = ({ pokemon }) => {
           {pokemon.stats.map(stat => (
             <Stats stat={stat} />
           ))}
-
         </ul>
       </div>
     </article>

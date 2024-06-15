@@ -1,0 +1,24 @@
+.emptycard {
+    width: 16.813rem; /*269px*/
+    height: 24rem; /*384px*/
+    background-color: var(--color-brand-10);
+    border-radius: var(--border-radius-xl);
+    padding: 0.5rem;
+    box-shadow: var(--shadow-s);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .bordeblanco {
+    border: 8px solid var(--color-brand-0);
+    width: 16.813rem; /*269px*/
+    height: 24rem; /*384px*/
+    border-radius: var(--border-radius-xl);
+    position: absolute;
+  }
+  .pokeball2 {
+    width: 160px;
+    height: 160px;
+    position: absolute;
+  }
+  

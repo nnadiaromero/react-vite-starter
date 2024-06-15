@@ -1,0 +1,30 @@
+.tagPhysical {
+  display: flex;
+  align-items: center;
+}
+
+.tagIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.tag {
+  background-color: var(--color-brand-20);
+
+  padding: var(--spacing-3xs) var(--spacing-xs) var(--spacing-3xs)
+    var(--spacing-xs);
+
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2xs);
+  border-radius: 6.25rem; /*100px*/
+}
+.tags {
+  height: 1.25rem; /*20px*/
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-desktop-caption);
+  color: var(--color-brand-0);
+  text-transform: capitalize;
+}

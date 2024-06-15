@@ -5,9 +5,8 @@ import { Footer } from './footer/footer'
 import { useState, useEffect } from 'react'
 import { Card } from './card/card'
 import { EmptyCard } from './emptyCard/emptyCard'
-import { i } from 'vitest/dist/reporters-yx5ZTtEV.js'
 
-type PokemonType = {
+export type PokemonType = {
   slot: number
   type: {
     name: string
