@@ -21,6 +21,7 @@ export type PokemonStat = {
 }
 
 export type Pokemon = {
+  [x: string]: any
   height: number
   id: number
   name: string
@@ -51,57 +52,6 @@ function transformPokemon(pokemonDto: PokemonDTO) {
 
   return newPok
 }
-
-//1. un tipo nuevo con las propiedas que yo necesite
-//2. función con pokemonDTO que lo transforme en otro  que sea (1.)
-
-// name: string
-// number: string
-// image: string
-// tags: { tagCharacter: string; tagWeapon: string }
-// physicalFeatures: { weight: string; measure: string }
-// stats: Array<{ slug: string; value: string }>
-// }
-// const bulbasaur: Pokemon = {
-//   name: 'Bulbasaur',
-//   number: '#001',
-//   image:
-//     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png',
-//   tags: {
-//     tagCharacter: 'Grass',
-//     tagWeapon: 'Poison',
-//   },
-//   physicalFeatures: {
-//     weight: '6.9 kg',
-//     measure: '0.7 m',
-//   },
-//   stats: [
-//     {
-//       slug: 'health-points',
-//       value: '45',
-//     },
-//     {
-//       slug: 'attack',
-//       value: '45',
-//     },
-//     {
-//       slug: 'defense',
-//       value: '45',
-//     },
-//     {
-//       slug: 'sat',
-//       value: '45',
-//     },
-//     {
-//       slug: 'sdf',
-//       value: '45',
-//     },
-//     {
-//       slug: 'speed',
-//       value: '45',
-//     },
-//   ],
-// }
 
 type statsLista = {
   [key: string]: string
