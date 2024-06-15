@@ -13,7 +13,7 @@ type PokemonType = {
   }
 }
 
-type PokemonStat = {
+type PokemonStatDTO = {
   base_stat: number
   effort: number
   stat: {
@@ -22,13 +22,9 @@ type PokemonStat = {
   }
 }
 
-
-
-
 export type PokemonDTO = {
   result: string
   abilities: string[]
-  pokemon: any
   base_experience: number
   cries: string
   forms: string[]
@@ -60,10 +56,50 @@ export type PokemonDTO = {
     }
     versions: string
   }
+  stats: PokemonStatDTO[]
+  types: PokemonType[]
+  weight: number
+}
+
+type PokemonStat = {
+  name: string
+  value: number
+}
+
+export type Pokemon = {
+  height: number
+  id: number
+  name: string
+  picture: string
   stats: PokemonStat[]
   types: PokemonType[]
   weight: number
 }
+
+function transformStat(statDTO: PokemonStatDTO) {
+  return {
+    name: statDTO.stat.name,
+    value: statDTO.base_stat,
+  }
+}
+
+function transformPokemon(pokemonDto: PokemonDTO) {
+  const { height, id, name, types, weight, stats } = pokemonDto
+  const newPok: Pokemon = {
+    height,
+    id,
+    name,
+    picture: pokemonDto.sprites.other['official-artwork'].front_default,
+    stats: stats.map(transformStat),
+    types,
+    weight,
+  }
+
+  return newPok
+}
+
+//1. un tipo nuevo con las propiedas que yo necesite
+//2. función con pokemonDTO que lo transforme en otro  que sea (1.)
 
 // name: string
 // number: string
@@ -151,7 +187,7 @@ function App() {
   //   return <div>Cargando...</div>
   // }
 
-  const [pokemons, setPokemons] = useState<PokemonDTO[]>()
+  const [pokemons, setPokemons] = useState<Pokemon[]>()
 
   const getPokemons = async () => {
     // Obtener el listado
@@ -172,12 +208,14 @@ function App() {
     })
 
     const todosPoks = await Promise.all(promesas)
-    console.log(todosPoks)
+    //console.log(todosPoks[0])
+
+    const transformedPokemons = todosPoks.map(transformPokemon)
 
     // Obtener los valores de cada uno
     // const response1 = await fetch('https://pokeapi.co/api/v2/pokemon/1/')
     // const jsonResponse1 = await response1.json()
-    setPokemons(todosPoks)
+    setPokemons(transformedPokemons)
   }
 
   useEffect(() => {
@@ -255,7 +293,7 @@ function App() {
         <main className="displaygrid">
           <section className="cards displaygrid">
             {pokemons.map(pokemon => (
-              <Card pokemon={pokemon} />
+              <Card key={pokemon.id} pokemon={pokemon} />
             ))}
           </section>
 

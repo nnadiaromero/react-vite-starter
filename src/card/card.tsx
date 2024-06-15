@@ -5,10 +5,9 @@ import {
   ReactPortal,
 } from 'react'
 import './card.modules.css'
-import { statName } from '../App'
-import { PokemonDTO } from '../App'
+import { Pokemon, statName } from '../App'
 
-type Props = { pokemon: PokemonDTO }
+type Props = { pokemon: Pokemon }
 
 // Tipar el pokemon
 export const Card: React.FC<Props> = ({ pokemon }) => {
@@ -28,37 +27,21 @@ export const Card: React.FC<Props> = ({ pokemon }) => {
         </h3>
       </label>
       <div className="featuresPokemon">
-        <img
-          className="imagePokemon"
-          src={pokemon.sprites.other['official-artwork'].front_default}
-        />
+        <img className="imagePokemon" src={pokemon.picture} />
         {/* NATURALEZA */}
         <div className="tags">
-          {pokemon.types.map(
-            (type: {
-              type: {
-                name:
-                  | string
-                  | number
-                  | boolean
-                  | ReactElement<any, string | JSXElementConstructor<any>>
-                  | Iterable<ReactNode>
-                  | ReactPortal
-                  | null
-                  | undefined
-              }
-            }) => (
-              <label
-                className={`tag ${type.type.name}`}
-                style={{
-                  backgroundColor: `var(--color-type-${type.type.name})`,
-                }}
-              >
-                <img className="tagIcon" src={`${type.type.name}.svg`} />
-                {type.type.name}
-              </label>
-            ),
-          )}
+          {pokemon.types.map(type => (
+            <label
+              key={type.type.name}
+              className={`tag ${type.type.name}`}
+              style={{
+                backgroundColor: `var(--color-type-${type.type.name})`,
+              }}
+            >
+              <img className="tagIcon" src={`${type.type.name}.svg`} />
+              {type.type.name}
+            </label>
+          ))}
         </div>
 
         {/* PESO Y ALTURA */}
@@ -78,95 +61,86 @@ export const Card: React.FC<Props> = ({ pokemon }) => {
         <ul className="lista">
           <li className="itemList">
             <label className="itemInfo">
-              <label className="item">
-                {statName[pokemon.stats[0].stat.name]}
-              </label>
+              <label className="item">{statName[pokemon.stats[0].name]}</label>
               <label>
-                {pokemon.stats[0].base_stat.toString().padStart(3, '0')}
+                {pokemon.stats[0].value.toString().padStart(3, '0')}
               </label>
             </label>
             <progress
               className="progress"
               max="250"
-              value={pokemon.stats[0].base_stat}
+              value={pokemon.stats[0].value}
             ></progress>
           </li>
           <li className="itemList">
             <label className="itemInfo">
-              <label className="item">
-                {statName[pokemon.stats[1].stat.name]}
-              </label>
+              <label className="item">{statName[pokemon.stats[1].name]}</label>
               <label>
-                {pokemon.stats[1].base_stat.toString().padStart(3, '0')}
+                {pokemon.stats[1].value.toString().padStart(3, '0')}
               </label>
             </label>
             <progress
               className="progress"
               max="250"
-              value={pokemon.stats[1].base_stat}
+              value={pokemon.stats[1].value}
             ></progress>
           </li>
           <li className="itemList">
             <label className="itemInfo">
-              <label className="item">
-                {statName[pokemon.stats[2].stat.name]}
-              </label>
+              <label className="item">{statName[pokemon.stats[2].name]}</label>
               <label>
-                {pokemon.stats[2].base_stat.toString().padStart(3, '0')}
+                {pokemon.stats[2].value.toString().padStart(3, '0')}
               </label>
             </label>
             <progress
               className="progress"
               max="250"
-              value={pokemon.stats[2].base_stat}
+              value={pokemon.stats[2].value}
             ></progress>
           </li>
           <li className="itemList">
             <label className="itemInfo">
-              <label className="item">
-                {statName[pokemon.stats[3].stat.name]}
-              </label>
+              <label className="item">{statName[pokemon.stats[3].name]}</label>
               <label>
-                {pokemon.stats[3].base_stat.toString().padStart(3, '0')}
+                {pokemon.stats[3].value.toString().padStart(3, '0')}
               </label>
               {/*.padStart(3, '0')===> para que sean tres dígitos empezando por 0*/}
             </label>
             <progress
               className="progress"
               max="250"
-              value={pokemon.stats[3].base_stat}
+              value={pokemon.stats[3].value}
             ></progress>
           </li>
+          
           <li className="itemList">
             <label className="itemInfo">
-              <label className="item">
-                {statName[pokemon.stats[4].stat.name]}
-              </label>
+              <label className="item">{statName[pokemon.stats[4].name]}</label>
               <label>
-                {pokemon.stats[4].base_stat.toString().padStart(3, '0')}
+                {pokemon.stats[4].value.toString().padStart(3, '0')}
               </label>
             </label>
             <progress
               className="progress"
               max="250"
-              value={pokemon.stats[4].base_stat}
+              value={pokemon.stats[4].value}
             ></progress>
           </li>
+
           <li className="itemList">
             <label className="itemInfo">
-              <label className="item">
-                {statName[pokemon.stats[5].stat.name]}
-              </label>
+              <label className="item">{statName[pokemon.stats[5].name]}</label>
               <label>
-                {pokemon.stats[5].base_stat.toString().padStart(3, '0')}
+                {pokemon.stats[5].value.toString().padStart(3, '0')}
               </label>
             </label>
             <progress
               className="progress"
               max="250"
-              value={pokemon.stats[5].base_stat}
+              value={pokemon.stats[5].value}
             ></progress>
           </li>
+
         </ul>
       </div>
     </article>
