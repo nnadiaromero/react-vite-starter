@@ -1,21 +1,15 @@
-import {
-  ReactElement,
-  JSXElementConstructor,
-  ReactNode,
-  ReactPortal,
-} from 'react'
+
 import './card.modules.css'
-import { Pokemon, statName } from '../App'
+import { Pokemon } from '../App'
+import { Stats } from './components/stats'
 
 type Props = { pokemon: Pokemon }
 
-// Tipar el pokemon
 export const Card: React.FC<Props> = ({ pokemon }) => {
   return (
     <article
       className="pokeCard"
       key={pokemon.id}
-      //COLORES DE LAS TARJETAS!!!
       style={{
         backgroundColor: `var(--color-type-${pokemon.types[0].type.name})`,
       }}
@@ -28,6 +22,7 @@ export const Card: React.FC<Props> = ({ pokemon }) => {
       </label>
       <div className="featuresPokemon">
         <img className="imagePokemon" src={pokemon.picture} />
+        
         {/* NATURALEZA */}
         <div className="tags">
           {pokemon.types.map(type => (
@@ -59,7 +54,11 @@ export const Card: React.FC<Props> = ({ pokemon }) => {
           {/* BARRAS DE PROGRESO */}
         </div>
         <ul className="lista">
-          <li className="itemList">
+          {pokemon.stats.map(stat => (
+            <Stats stat={stat} />
+          ))}
+
+          {/* <li className="itemList">
             <label className="itemInfo">
               <label className="item">{statName[pokemon.stats[0].name]}</label>
               <label>
@@ -85,6 +84,7 @@ export const Card: React.FC<Props> = ({ pokemon }) => {
               value={pokemon.stats[1].value}
             ></progress>
           </li>
+          
           <li className="itemList">
             <label className="itemInfo">
               <label className="item">{statName[pokemon.stats[2].name]}</label>
@@ -98,13 +98,13 @@ export const Card: React.FC<Props> = ({ pokemon }) => {
               value={pokemon.stats[2].value}
             ></progress>
           </li>
+
           <li className="itemList">
             <label className="itemInfo">
               <label className="item">{statName[pokemon.stats[3].name]}</label>
               <label>
                 {pokemon.stats[3].value.toString().padStart(3, '0')}
               </label>
-              {/*.padStart(3, '0')===> para que sean tres dígitos empezando por 0*/}
             </label>
             <progress
               className="progress"
@@ -112,7 +112,7 @@ export const Card: React.FC<Props> = ({ pokemon }) => {
               value={pokemon.stats[3].value}
             ></progress>
           </li>
-          
+
           <li className="itemList">
             <label className="itemInfo">
               <label className="item">{statName[pokemon.stats[4].name]}</label>
@@ -139,8 +139,7 @@ export const Card: React.FC<Props> = ({ pokemon }) => {
               max="250"
               value={pokemon.stats[5].value}
             ></progress>
-          </li>
-
+          </li> */}
         </ul>
       </div>
     </article>

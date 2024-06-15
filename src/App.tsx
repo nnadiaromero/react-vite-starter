@@ -61,7 +61,7 @@ export type PokemonDTO = {
   weight: number
 }
 
-type PokemonStat = {
+export type PokemonStat = {
   name: string
   value: number
 }
@@ -228,6 +228,7 @@ function App() {
         <>
           <Header />
           <SearchBar />
+          {/* hacer un for del 1-6 */}
           <div className="grid">
             <main className="displaygrid">
               <section className="cards displaygrid">
