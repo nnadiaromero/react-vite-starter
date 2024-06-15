@@ -4,6 +4,8 @@ import { SearchBar } from './searchbar/searchbar'
 import { Footer } from './footer/footer'
 import { useState, useEffect } from 'react'
 import { Card } from './card/card'
+import { EmptyCard } from './emptyCard/emptyCard'
+import { i } from 'vitest/dist/reporters-yx5ZTtEV.js'
 
 type PokemonType = {
   slot: number
@@ -231,57 +233,16 @@ function App() {
           {/* hacer un for del 1-6 */}
           <div className="grid">
             <main className="displaygrid">
-              <section className="cards displaygrid">
-                <section className="emptycard">
-                  <img className="pokeball2" src="./public/pokeball2.svg" />
-                  <div className="bordeblanco"></div>
-                </section>
-              </section>
-              <section className="cards displaygrid">
-                <section className="emptycard">
-                  <img className="pokeball2" src="./public/pokeball2.svg" />
-                  <div className="bordeblanco"></div>
-                </section>
-              </section>
-              <section className="cards displaygrid">
-                <section className="emptycard">
-                  <img className="pokeball2" src="./public/pokeball2.svg" />
-                  <div className="bordeblanco"></div>
-                </section>
-              </section>
-              <section className="cards displaygrid">
-                <section className="emptycard">
-                  <img className="pokeball2" src="./public/pokeball2.svg" />
-                  <div className="bordeblanco"></div>
-                </section>
-              </section>
-              <section className="cards displaygrid">
-                <section className="emptycard">
-                  <img className="pokeball2" src="./public/pokeball2.svg" />
-                  <div className="bordeblanco"></div>
-                </section>
-              </section>
-              <section className="cards displaygrid">
-                <section className="emptycard">
-                  <img className="pokeball2" src="./public/pokeball2.svg" />
-                  <div className="bordeblanco"></div>
-                </section>
-              </section>
-
-              {/*EMPTY CARD */}
-              {/* <section className="emptycard">
-            <img className="pokeball2" src="./public/pokeball2.svg" />
-            <div className="bordeblanco"></div>
-          </section> */}
+              <EmptyCard />
+              <EmptyCard />
+              <EmptyCard />
+              <EmptyCard />
+              <EmptyCard />
+              <EmptyCard />
             </main>
           </div>
           <Footer />
         </>
-
-        {/* <section className="emptycard">
-            <img className="pokeball2" src="./public/pokeball2.svg" />
-            <div className="bordeblanco"></div>
-          </section> */}
       </div>
     )
   }
