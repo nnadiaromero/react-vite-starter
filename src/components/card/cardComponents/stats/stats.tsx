@@ -1,5 +1,5 @@
-import { PokemonStat, statName } from '../../../App'
-import "./stats.modules.css"
+import { PokemonStat, statName } from '../../../../App'
+import './stats.modules.css'
 
 type Props = { stat: PokemonStat }
 

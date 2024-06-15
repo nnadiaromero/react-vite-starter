@@ -3,8 +3,9 @@ import { Header } from './header/header'
 import { SearchBar } from './searchbar/searchbar'
 import { Footer } from './footer/footer'
 import { useState, useEffect } from 'react'
-import { Card } from './card/card'
 import { EmptyCard } from './emptyCard/emptyCard'
+import { PokemonDTO, PokemonStatDTO } from './dto/typesDto'
+import { Card } from './components/card/card'
 
 export type PokemonType = {
   slot: number
@@ -12,54 +13,6 @@ export type PokemonType = {
     name: string
     url: string
   }
-}
-
-type PokemonStatDTO = {
-  base_stat: number
-  effort: number
-  stat: {
-    name: string
-    url: string
-  }
-}
-
-export type PokemonDTO = {
-  result: string
-  abilities: string[]
-  base_experience: number
-  cries: string
-  forms: string[]
-  game_indices: string[]
-  height: number
-  id: number
-  is_default: boolean
-  location_area_encounters: string
-  moves: string[]
-  name: string
-  order: number
-  past_abilities: string[]
-  past_types: string[]
-  species: { name: string; url: string }
-  sprites: {
-    back_default: string
-    back_female: string
-    back_shiny: string
-    back_shiny_female: string
-    front_default: string
-    front_female: string
-    front_shiny: string
-    front_shiny_female: string
-    other: {
-      dream_world: string
-      home: string
-      ['official-artwork']: { front_default: string; front_shiny: string }
-      showdown: string
-    }
-    versions: string
-  }
-  stats: PokemonStatDTO[]
-  types: PokemonType[]
-  weight: number
 }
 
 export type PokemonStat = {
@@ -172,22 +125,6 @@ type PokemonSimple = {
 }
 
 function App() {
-  // const [pokemon, setPokemons] = useState<Pokemon>()
-
-  // useEffect(() => {
-  //   fetch('https://pokeapi.co/api/v2/pokemon/1/')
-  //     .then(response => {
-  //       return response.json()
-  //     })
-  //     .then(pokemons => {
-  //       setPokemons(pokemons)
-  //     })
-  // }, [])
-
-  // if (pokemon === undefined) {
-  //   return <div>Cargando...</div>
-  // }
-
   const [pokemons, setPokemons] = useState<Pokemon[]>()
 
   const getPokemons = async () => {
@@ -198,24 +135,16 @@ function App() {
     //Que el listado se guarde en un archivo .json
     const jsonResponse: PokemonList = await response.json()
 
-    // console.log(jsonResponse.results)
-
-    // jsonResponse.results.map(result => console.log(result))
-    // const fetchPromises= jsonResponse.results.map(url =>)
-
     const promesas = jsonResponse.results.map(async result => {
       const pok = await fetch(result.url)
       return await pok.json()
     })
 
     const todosPoks = await Promise.all(promesas)
-    //console.log(todosPoks[0])
 
     const transformedPokemons = todosPoks.map(transformPokemon)
 
     // Obtener los valores de cada uno
-    // const response1 = await fetch('https://pokeapi.co/api/v2/pokemon/1/')
-    // const jsonResponse1 = await response1.json()
     setPokemons(transformedPokemons)
   }
 
@@ -229,7 +158,6 @@ function App() {
         <>
           <Header />
           <SearchBar />
-          {/* hacer un for del 1-6 */}
           <div className="grid">
             <main className="displaygrid">
               <EmptyCard />
@@ -257,12 +185,6 @@ function App() {
               <Card key={pokemon.id} pokemon={pokemon} />
             ))}
           </section>
-
-          {/*EMPTY CARD */}
-          {/* <section className="emptycard">
-            <img className="pokeball2" src="./public/pokeball2.svg" />
-            <div className="bordeblanco"></div>
-          </section> */}
         </main>
       </div>
       <Footer />

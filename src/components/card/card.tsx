@@ -1,5 +1,5 @@
+import { Pokemon } from '../../App'
 import './card.modules.css'
-import { Pokemon } from '../App'
 import { Stats } from './cardComponents/stats/stats'
 import { Types } from './cardComponents/types/types'
 
@@ -26,7 +26,7 @@ export const Card: React.FC<Props> = ({ pokemon }) => {
         {/* NATURALEZA */}
         <div className="tags">
           {pokemon.types.map(type => (
-            <Types type={type} />
+            <Types key={type.type.name} type={type} />
           ))}
         </div>
 
@@ -41,12 +41,12 @@ export const Card: React.FC<Props> = ({ pokemon }) => {
             <img className="rulerIcon" src="./public/ruler.svg" />
             {pokemon.height / 10} m
           </label>
-
-          {/* BARRAS DE PROGRESO */}
         </div>
+
+        {/* BARRAS DE PROGRESO */}
         <ul className="lista">
           {pokemon.stats.map(stat => (
-            <Stats stat={stat} />
+            <Stats key={stat.name} stat={stat} />
           ))}
         </ul>
       </div>
