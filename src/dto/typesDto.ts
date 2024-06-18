@@ -38,6 +38,7 @@ export type PokemonDTO = {
     stats: PokemonStatDTO[]
     types: PokemonType[]
     weight: number
+
   }
   
 export type PokemonStatDTO = {

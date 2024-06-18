@@ -21,7 +21,6 @@ export type PokemonStat = {
 }
 
 export type Pokemon = {
-  [x: string]: any
   height: number
   id: number
   name: string
@@ -76,7 +75,7 @@ type PokemonSimple = {
 
 function App() {
   const [pokemons, setPokemons] = useState<Pokemon[]>()
-
+  // console.log(pokemons)
   const getPokemons = async () => {
     // Obtener el listado
     const response = await fetch(
@@ -89,15 +88,19 @@ function App() {
       const pok = await fetch(result.url)
       return await pok.json()
     })
-
     const todosPoks = await Promise.all(promesas)
-
     const transformedPokemons = todosPoks.map(transformPokemon)
-
-    // Obtener los valores de cada uno
     setPokemons(transformedPokemons)
   }
-
+  const handleSearch = (query: string) => {
+    console.log('Buscando:', query)
+    if (query.length > 0) {
+      pokemons.filter(pokeQuery => {
+        return pokeQuery.name.match(query)
+      })
+    }
+  }
+  // Obtener los valores de cada uno
   useEffect(() => {
     getPokemons()
   }, [])
@@ -107,7 +110,7 @@ function App() {
       <div>
         <>
           <Header />
-          <SearchBar />
+          <SearchBar onSearch={handleSearch} />
           <div className="grid">
             <main className="displaygrid">
               <EmptyCard />
@@ -127,7 +130,7 @@ function App() {
   return (
     <>
       <Header />
-      <SearchBar />
+      <SearchBar onSearch={handleSearch} />
       <div className="grid">
         <main className="displaygrid">
           <section className="cards displaygrid">

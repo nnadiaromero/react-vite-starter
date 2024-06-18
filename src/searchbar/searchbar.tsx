@@ -1,43 +1,40 @@
-import { useState } from 'react'
+import React,{ useState, ChangeEvent, FormEvent } from 'react'
 import './searchbar.modules.css'
-import { Pokemon } from '../App'
+import "../App"
 
-//almacenar texto del input en componente
-//filtrar la info
-// https://salehmubashar.com/blog/create-a-search-bar-in-react-js
+interface SearchBarProps {
+  onSearch: (query:string)=>void;}
 
-type Props = { pokemon: Pokemon }
+  // type Props = { onSearch: Pokemon}
 
-export const SearchBar: React.FC<Props> = ({ pokemon }) => {
-  const [inputText, setInputText] = useState('')
+export const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 
-  const inputHandler = e => {
-    //convert input text to lower case
-    var lowerCase = e.target.value.toLowerCase()
-    setInputText(lowerCase)
-  }
-type poke={
-  name: string
-}
-if (inputText.length > 0) {
-    pokemon.filter((poke: poke) => {
-    return poke.name.match(inputText);
-});
-}
+  const [query, setQuery]= useState<string>("");
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) =>{
+    setQuery(event.target.value);
+  };
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    onSearch(query);
+  };
+
+
   return (
     <div className="buscador">
       <section className="bar">
         <img className="lupa" src="./public/Magnifying glass.svg" />
-
+        <form onSubmit={handleSubmit}>
         <input
           className="text"
           type="text"
           placeholder="Search a Pokémon..."
-          onChange={inputHandler}
-          value={inputText}
+          onChange= {handleChange}
+          value={query}
         ></input>
+        </form>
         {/* <input hidden type="submit"></input> */}
-      </section>
+         </section>
     </div>
   )
 }
