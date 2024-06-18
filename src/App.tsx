@@ -74,8 +74,10 @@ type PokemonSimple = {
 }
 
 function App() {
-  const [pokemons, setPokemons] = useState<Pokemon[]>()
+  const [pokemons, setPokemons] = useState<Pokemon[]>([])
+  const [queryPokemons, setQueryPokemons] = useState<Pokemon[]>([])
   // console.log(pokemons)
+
   const getPokemons = async () => {
     // Obtener el listado
     const response = await fetch(
@@ -91,21 +93,26 @@ function App() {
     const todosPoks = await Promise.all(promesas)
     const transformedPokemons = todosPoks.map(transformPokemon)
     setPokemons(transformedPokemons)
+    setQueryPokemons(transformedPokemons)
   }
+
   const handleSearch = (query: string) => {
+    // if (!query.length) return
+
     console.log('Buscando:', query)
-    if (query.length > 0) {
-      pokemons.filter(pokeQuery => {
-        return pokeQuery.name.match(query)
-      })
-    }
+    const filteredPokemons = pokemons.filter(pokeQuery => {
+      return pokeQuery.name.match(query)
+    })
+    setQueryPokemons(filteredPokemons)
+
+    console.log(filteredPokemons.length)
   }
   // Obtener los valores de cada uno
   useEffect(() => {
     getPokemons()
   }, [])
 
-  if (pokemons === undefined) {
+  if (pokemons.length === 0) {
     return (
       <div>
         <>
@@ -134,7 +141,7 @@ function App() {
       <div className="grid">
         <main className="displaygrid">
           <section className="cards displaygrid">
-            {pokemons.map(pokemon => (
+            {queryPokemons.map(pokemon => (
               <Card key={pokemon.id} pokemon={pokemon} />
             ))}
           </section>
