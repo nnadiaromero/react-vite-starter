@@ -75,7 +75,8 @@ type PokemonSimple = {
 
 function App() {
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
-  const [queryPokemons, setQueryPokemons] = useState<Pokemon[]>([])
+  const [query, setQuery] = useState<string>('')
+
   // console.log(pokemons)
 
   const getPokemons = async () => {
@@ -93,19 +94,10 @@ function App() {
     const todosPoks = await Promise.all(promesas)
     const transformedPokemons = todosPoks.map(transformPokemon)
     setPokemons(transformedPokemons)
-    setQueryPokemons(transformedPokemons)
   }
 
   const handleSearch = (query: string) => {
-    // if (!query.length) return
-
-    console.log('Buscando:', query)
-    const filteredPokemons = pokemons.filter(pokeQuery => {
-      return pokeQuery.name.match(query)
-    })
-    setQueryPokemons(filteredPokemons)
-
-    console.log(filteredPokemons.length)
+    setQuery(query)
   }
   // Obtener los valores de cada uno
   useEffect(() => {
@@ -114,10 +106,9 @@ function App() {
 
   if (pokemons.length === 0) {
     return (
-      <div>
         <>
           <Header />
-          <SearchBar onSearch={handleSearch} />
+          <SearchBar query={query} onSearch={handleSearch} />
           <div className="grid">
             <main className="displaygrid">
               <EmptyCard />
@@ -130,14 +121,35 @@ function App() {
           </div>
           <Footer />
         </>
-      </div>
     )
   }
+
+  console.log('RENDERIZO')
+  console.log('@@pokemons', pokemons)
+  console.log('@@query', query)
+
+  const queryPokemons: Pokemon[] = pokemons.filter(queryPokemon => {
+    return queryPokemon.name.match(query)
+  })
+  if (queryPokemons.length === 0) {
+    return (
+      <>
+        <Header />
+        <SearchBar query={query} onSearch={handleSearch} />
+        <div className="error">
+          <img className="iconoAlert" src="pokeNot.svg" />
+          <p>There is no results for "{query}"</p>
+        </div>
+        <Footer />
+      </>
+    )
+  }
+  console.log('@@queryPokemons', queryPokemons)
 
   return (
     <>
       <Header />
-      <SearchBar onSearch={handleSearch} />
+      <SearchBar query={query} onSearch={handleSearch} />
       <div className="grid">
         <main className="displaygrid">
           <section className="cards displaygrid">

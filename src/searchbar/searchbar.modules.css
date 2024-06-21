@@ -27,15 +27,14 @@
   width: 540px; 
   height: 46px;
   border-radius: var(--border-radius-s);
-  position:relative;
-  left: -57px;
+  position:absolute;
   border: none;
   background-color: transparent;
   font-size: 16px;
   font-weight: 400;
   font-family: kanit;
   color: var(--color-brand-60);
-  padding-left: 58px
+  padding-left: 58px;
 }
 .text:focus{
   border: 1px solid var(--color-type-accent);
