@@ -1,54 +1,58 @@
 .item {
-    color: var(--color-brand-30);
-  }
-  .itemList {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 1rem;
-  }
-  .itemInfo {
-    width: 3.188rem; /*51px*/
-    display: flex;
-    justify-content: space-between;
-    font-weight: 400;
-    font-size: var(--font-size-desktop-caption);
-  }
-  progress[value] {
-    width: 12.125rem;
-    height: var(--spacing-2xs);
-  
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none; /* APARIENCIA BARRA PROGRESO FIREFOX */
-  
-    border: none;
-  }
-  progress[value]::-webkit-progress-bar {
-    background-color: var(--color-brand-10);
-    border-radius: 30px;
-  }
-  progress[value]::-webkit-progress-value {
-    background-color: var(--color-brand-90);
-    border-radius: 30px;
-  }
-  
-  /* APARIENCIA BARRA PROGRESO FIREFOX */
-  progress[value]::-moz-progress-bar {
-    background-color: var(--color-brand-90);
-    border-radius: 1.875rem; /*30px*/
-  }
-  .progress {
-    background-color: var(--color-brand-10);
-    border-radius: 1.875rem; /*30px*/
-  }
-  .lista {
-    height: 6.625rem;
-    list-style: none;
-    margin: 0rem;
-    padding: 0rem;
-    gap: var(--spacing-3xs);
-    display: flex;
-    flex-direction: column;
-  }
-  
+  color: var(--color-brand-30);
+}
+.itemList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 1rem;
+  gap: 8px;
+}
+.itemInfo {
+  /* width: 3.188rem; 51px */
+  width: 61px;
+  height: 1rem;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: var(--font-size-desktop-caption);
+}
+progress[value] {
+  /* width: 12.125rem; */
+  /* width: auto-fit; */
+  width: 100%;
+  height: var(--spacing-2xs);
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none; /* APARIENCIA BARRA PROGRESO FIREFOX */
+
+  border: none;
+}
+progress[value]::-webkit-progress-bar {
+  background-color: var(--color-brand-10);
+  border-radius: 30px;
+}
+progress[value]::-webkit-progress-value {
+  background-color: var(--color-brand-90);
+  border-radius: 30px;
+}
+
+/* APARIENCIA BARRA PROGRESO FIREFOX */
+progress[value]::-moz-progress-bar {
+  background-color: var(--color-brand-90);
+  border-radius: 1.875rem; /*30px*/
+}
+.progress {
+  background-color: var(--color-brand-10);
+  border-radius: 1.875rem; /*30px*/
+}
+.lista {
+  height: 6.625rem;
+  list-style: none;
+  margin: 0rem;
+  padding: 0rem;
+  gap: var(--spacing-3xs);
+  display: flex;
+  flex-direction: column;
+}

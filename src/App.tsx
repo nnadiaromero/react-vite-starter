@@ -72,18 +72,23 @@ type PokemonList = {
 type PokemonSimple = {
   url: string
 }
-
 function App() {
+
+
+
+  
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
   const [query, setQuery] = useState<string>('')
-
-  // console.log(pokemons)
-
+  
   const getPokemons = async () => {
+
+    try{
+
     // Obtener el listado
     const response = await fetch(
-      'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151',
+      'https://poeapi.co/api/v2/pokemon/?offset=0&limit=151',
     )
+
     //Que el listado se guarde en un archivo .json
     const jsonResponse: PokemonList = await response.json()
 
@@ -94,33 +99,45 @@ function App() {
     const todosPoks = await Promise.all(promesas)
     const transformedPokemons = todosPoks.map(transformPokemon)
     setPokemons(transformedPokemons)
+
+  }catch (err){
+    
+
+
+    
+    }
   }
 
   const handleSearch = (query: string) => {
     setQuery(query)
   }
+
   // Obtener los valores de cada uno
   useEffect(() => {
     getPokemons()
   }, [])
 
+  //CARTAS CARGANDO
   if (pokemons.length === 0) {
     return (
-        <>
-          <Header />
-          <SearchBar query={query} onSearch={handleSearch} />
-          <div className="grid">
-            <main className="displaygrid">
-              <EmptyCard />
-              <EmptyCard />
-              <EmptyCard />
-              <EmptyCard />
-              <EmptyCard />
-              <EmptyCard />
-            </main>
-          </div>
-          <Footer />
-        </>
+      <>
+        <Header />
+        <div style={{ padding: '0 16px' }}>
+
+        <SearchBar query={query} onSearch={handleSearch} />
+        <div className="grid">
+          <main className="displaygrid">
+            <EmptyCard />
+            <EmptyCard />
+            <EmptyCard />
+            <EmptyCard />
+            <EmptyCard />
+            <EmptyCard />
+          </main>
+        </div>
+        </div>
+        <Footer />
+      </>
     )
   }
 
@@ -131,6 +148,8 @@ function App() {
   const queryPokemons: Pokemon[] = pokemons.filter(queryPokemon => {
     return queryPokemon.name.match(query)
   })
+
+//BÚSQUEDA VACÍA
   if (queryPokemons.length === 0) {
     return (
       <>
@@ -146,19 +165,22 @@ function App() {
   }
   console.log('@@queryPokemons', queryPokemons)
 
+  //BÚSQUEDA
   return (
     <>
       <Header />
-      <SearchBar query={query} onSearch={handleSearch} />
-      <div className="grid">
-        <main className="displaygrid">
-          <section className="cards displaygrid">
+
+      <div style={{ padding: '0 16px' }}>
+        <SearchBar query={query} onSearch={handleSearch} />
+        <div className="grid">
+          <main className="displaygrid">
             {queryPokemons.map(pokemon => (
               <Card key={pokemon.id} pokemon={pokemon} />
             ))}
-          </section>
-        </main>
+          </main>
+        </div>
       </div>
+
       <Footer />
     </>
   )

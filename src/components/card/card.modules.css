@@ -1,5 +1,4 @@
 .pokeCard {
-  width: 16.813rem; /*269px*/
   height: 24rem; /*384px*/
   background-color: var(--color-type-grass);
   border-radius: var(--border-radius-xl);
@@ -9,6 +8,7 @@
   justify-content: space-between;
   box-shadow: var(--shadow-s);
 }
+
 .featuresPokemon {
   background-color: var(--color-brand-0);
   border-radius: var(--border-radius-l);

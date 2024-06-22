@@ -1,16 +1,35 @@
-body{
-  margin: 0px;
+*,
+::after,
+::before {
+  box-sizing: border-box;
+
+  padding: 0;
+  margin: 0;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-:root {
+
+html,
+body,
+#root {
+  min-height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+
   font-family: kanit;
   line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-brand-5);
 
+  background-color: var(--color-brand-5);
+}
+
+:root {
   --color-type-accent: #7d3bec;
   --color-type-grass: #a2ce69;
   --color-type-bug: #c6d282;

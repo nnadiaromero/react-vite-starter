@@ -1,14 +1,23 @@
 .buscador {
-  margin: var(--spacing-4xl);
-  gap: var(--spacing-m);
-  display:flex;
-  justify-content:center;
+  width: 100%;
+  max-width: 600px;
+  margin: var(--spacing-4xl) 0;
 
-  
+  /* gap: var(--spacing-m);
+  display: flex;
+  justify-content: center; */
+
+  @media screen and (min-width: 600px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
+
 .bar {
+  padding-inline: 16px;
   border: 1px solid var(--color-brand-30);
-  width: 600px;
+  width: 100%;
+
   height: 48px;
   border-radius: var(--border-radius-s);
   background-color: var(--color-brand-10);
@@ -16,30 +25,29 @@
   display: flex;
   align-items: center;
   gap: 16px;
+}
 
+.bar:has(input:focus) {
+  border: 1px solid var(--color-type-accent);
 }
 .lupa {
   width: 1.5rem;
   height: 1.5rem;
-  margin-left: 16px;
 }
 .text {
-  width: 540px; 
-  height: 46px;
-  border-radius: var(--border-radius-s);
-  position:absolute;
+  /*   width: 570px;
+ */
+ width: 100%;
+  height: 48px;
   border: none;
   background-color: transparent;
   font-size: 16px;
   font-weight: 400;
   font-family: kanit;
   color: var(--color-brand-60);
-  padding-left: 58px;
 }
-.text:focus{
-  border: 1px solid var(--color-type-accent);
-  outline: none
-
+.text:focus {
+  outline: none;
 }
 .text::placeholder {
   color: var(--color-brand-60);

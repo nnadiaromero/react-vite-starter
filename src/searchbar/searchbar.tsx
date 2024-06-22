@@ -22,7 +22,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ query, onSearch }) => {
           placeholder="Search a Pokémon..."
           onChange={handleChange}
           value={query}
-        ></input>
+        />
       </section>
     </div>
   )
