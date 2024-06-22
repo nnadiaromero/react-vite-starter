@@ -1,3 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 100vh;
+}
+
+.wrapper {
+  padding: 0 16px;
+}
+
 .displaygrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

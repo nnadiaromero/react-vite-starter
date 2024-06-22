@@ -73,38 +73,37 @@ type PokemonSimple = {
   url: string
 }
 function App() {
-
-
-
-  
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
   const [query, setQuery] = useState<string>('')
-  
+
   const getPokemons = async () => {
+    try {
+      // Obtener el listado
+      const response = await fetch(
+        'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151',
+      )
 
-    try{
+      //Que el listado se guarde en un archivo .json
+      const jsonResponse: PokemonList = await response.json()
 
-    // Obtener el listado
-    const response = await fetch(
-      'https://poeapi.co/api/v2/pokemon/?offset=0&limit=151',
-    )
-
-    //Que el listado se guarde en un archivo .json
-    const jsonResponse: PokemonList = await response.json()
-
-    const promesas = jsonResponse.results.map(async result => {
-      const pok = await fetch(result.url)
-      return await pok.json()
-    })
-    const todosPoks = await Promise.all(promesas)
-    const transformedPokemons = todosPoks.map(transformPokemon)
-    setPokemons(transformedPokemons)
-
-  }catch (err){
-    
-
-
-    
+      const promesas = jsonResponse.results.map(async result => {
+        const pok = await fetch(result.url)
+        return await pok.json()
+      })
+      const todosPoks = await Promise.all(promesas)
+      const transformedPokemons = todosPoks.map(transformPokemon)
+      setPokemons(transformedPokemons)
+    } catch (err) {
+      ;<>
+        <Header />
+        <div style={{ padding: '0 16px' }}>
+          <SearchBar query={query} onSearch={handleSearch} />
+          <div className="grid">
+            <main className="displaygrid">error</main>
+          </div>
+        </div>
+        <Footer />
+      </>
     }
   }
 
@@ -123,18 +122,17 @@ function App() {
       <>
         <Header />
         <div style={{ padding: '0 16px' }}>
-
-        <SearchBar query={query} onSearch={handleSearch} />
-        <div className="grid">
-          <main className="displaygrid">
-            <EmptyCard />
-            <EmptyCard />
-            <EmptyCard />
-            <EmptyCard />
-            <EmptyCard />
-            <EmptyCard />
-          </main>
-        </div>
+          <SearchBar query={query} onSearch={handleSearch} />
+          <div className="grid">
+            <main className="displaygrid">
+              <EmptyCard />
+              <EmptyCard />
+              <EmptyCard />
+              <EmptyCard />
+              <EmptyCard />
+              <EmptyCard />
+            </main>
+          </div>
         </div>
         <Footer />
       </>
@@ -149,7 +147,7 @@ function App() {
     return queryPokemon.name.match(query)
   })
 
-//BÚSQUEDA VACÍA
+  //BÚSQUEDA VACÍA
   if (queryPokemons.length === 0) {
     return (
       <>
@@ -167,11 +165,14 @@ function App() {
 
   //BÚSQUEDA
   return (
-    <>
-      <Header />
+    <div className="container">
+      <div>
+        <Header />
 
-      <div style={{ padding: '0 16px' }}>
         <SearchBar query={query} onSearch={handleSearch} />
+      </div>
+
+      <div className="wrapper">
         <div className="grid">
           <main className="displaygrid">
             {queryPokemons.map(pokemon => (
@@ -182,7 +183,7 @@ function App() {
       </div>
 
       <Footer />
-    </>
+    </div>
   )
 }
 
