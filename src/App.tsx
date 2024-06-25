@@ -75,6 +75,7 @@ type PokemonSimple = {
 function App() {
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
   const [query, setQuery] = useState<string>('')
+  const [error, setError] = useState(false)
 
   const getPokemons = async () => {
     try {
@@ -94,16 +95,7 @@ function App() {
       const transformedPokemons = todosPoks.map(transformPokemon)
       setPokemons(transformedPokemons)
     } catch (err) {
-      ;<>
-        <Header />
-        <div style={{ padding: '0 16px' }}>
-          <SearchBar query={query} onSearch={handleSearch} />
-          <div className="grid">
-            <main className="displaygrid">error</main>
-          </div>
-        </div>
-        <Footer />
-      </>
+      setError(true)
     }
   }
 
@@ -113,16 +105,31 @@ function App() {
 
   // Obtener los valores de cada uno
   useEffect(() => {
-    getPokemons()
+    //getPokemons()
+    const onLoad = async () => {
+      try {
+        const result = await pokemonService.getPokemons()
+        setPokemons(result)
+      } catch (error) {
+        setError(true)
+      }
+    }
+
+    onLoad()
   }, [])
 
-  //CARTAS CARGANDO
-  if (pokemons.length === 0) {
-    return (
-      <>
-        <Header />
-        <div style={{ padding: '0 16px' }}>
-          <SearchBar query={query} onSearch={handleSearch} />
+  const getContent = () => {
+    if (error) {
+      return <div className="error">
+        <img className="iconoConexion" src="alert.svg"/>
+        <p>An error occurred getting Pokémons.</p>
+        <p>Please, try it later</p>
+      </div>
+    } 
+    
+    if (pokemons.length === 0) {
+      return (
+        <div className="wrapper">
           <div className="grid">
             <main className="displaygrid">
               <EmptyCard />
@@ -134,44 +141,19 @@ function App() {
             </main>
           </div>
         </div>
-        <Footer />
-      </>
-    )
-  }
-
-  console.log('RENDERIZO')
-  console.log('@@pokemons', pokemons)
-  console.log('@@query', query)
-
-  const queryPokemons: Pokemon[] = pokemons.filter(queryPokemon => {
-    return queryPokemon.name.match(query)
-  })
-
-  //BÚSQUEDA VACÍA
-  if (queryPokemons.length === 0) {
-    return (
-      <>
-        <Header />
-        <SearchBar query={query} onSearch={handleSearch} />
+      )
+    }
+    
+    if (queryPokemons.length === 0) {
+      return (
         <div className="error">
           <img className="iconoAlert" src="pokeNot.svg" />
           <p>There is no results for "{query}"</p>
         </div>
-        <Footer />
-      </>
-    )
-  }
-  console.log('@@queryPokemons', queryPokemons)
+      )
+    }
 
-  //BÚSQUEDA
-  return (
-    <div className="container">
-      <div>
-        <Header />
-
-        <SearchBar query={query} onSearch={handleSearch} />
-      </div>
-
+    return (
       <div className="wrapper">
         <div className="grid">
           <main className="displaygrid">
@@ -181,10 +163,27 @@ function App() {
           </main>
         </div>
       </div>
+    )
+  }
+
+  const queryPokemons: Pokemon[] = pokemons.filter(queryPokemon => {
+    return queryPokemon.name.match(query.toLowerCase())
+  })
+
+  return (
+    <div className="container">
+      <div>
+        <Header />
+
+        <SearchBar query={query} onSearch={handleSearch} />
+
+        {getContent()}
+      </div>
 
       <Footer />
     </div>
   )
+
 }
 
 export default App

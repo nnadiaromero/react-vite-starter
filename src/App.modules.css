@@ -29,7 +29,7 @@
   align-items: center;
   margin: 235px auto 235px auto;
 }
-.iconoAlert {
+.iconoAlert, .iconoConexion {
   width: 64px;
   height: 64px;
   margin-bottom: 24px;
