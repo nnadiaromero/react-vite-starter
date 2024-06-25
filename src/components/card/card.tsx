@@ -1,7 +1,7 @@
 import { Pokemon } from '../../App'
 import './card.modules.css'
-import { Stats } from './cardComponents/stats/stats'
-import { Types } from './cardComponents/types/types'
+import { Stats } from './cardComponents/Stats/Stats'
+import { Types } from './cardComponents/Types/Types'
 
 type Props = { pokemon: Pokemon }
 

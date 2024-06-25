@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import { SearchBar } from '../searchbar'
+import { SearchBar } from '../Searchbar'
 import userEvent from '@testing-library/user-event'
 
 describe('searchbar', () => {

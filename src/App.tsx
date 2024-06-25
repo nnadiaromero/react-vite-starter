@@ -1,11 +1,12 @@
 import './App.modules.css'
-import { Header } from './header/header'
-import { SearchBar } from './searchbar/searchbar'
-import { Footer } from './footer/footer'
+import { Header } from './Header/Header'
+import { SearchBar } from './Searchbar/Searchbar'
+import { Footer } from './Footer/Footer'
 import { useState, useEffect } from 'react'
-import { EmptyCard } from './emptyCard/emptyCard'
-import { PokemonDTO, PokemonStatDTO } from './dto/typesDto'
-import { Card } from './components/card/card'
+import { EmptyCard } from './EmptyCard/EmptyCard'
+import { PokemonDTO, PokemonStatDTO } from './Dto/TypesDto'
+import { Card } from './Components/card/Card'
+import { pokemonService } from './Services/PokemonService'
 
 export type PokemonType = {
   slot: number
@@ -37,7 +38,7 @@ function transformStat(statDTO: PokemonStatDTO) {
   }
 }
 
-function transformPokemon(pokemonDto: PokemonDTO) {
+export function transformPokemon(pokemonDto: PokemonDTO) {
   const { height, id, name, types, weight, stats } = pokemonDto
   const newPok: Pokemon = {
     height,
@@ -65,7 +66,7 @@ export const statName: statsLista = {
   speed: 'SPD',
 }
 
-type PokemonList = {
+export type PokemonList = {
   results: PokemonSimple[]
 }
 
@@ -77,27 +78,10 @@ function App() {
   const [query, setQuery] = useState<string>('')
   const [error, setError] = useState(false)
 
-  const getPokemons = async () => {
-    try {
-      // Obtener el listado
-      const response = await fetch(
-        'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151',
-      )
-
-      //Que el listado se guarde en un archivo .json
-      const jsonResponse: PokemonList = await response.json()
-
-      const promesas = jsonResponse.results.map(async result => {
-        const pok = await fetch(result.url)
-        return await pok.json()
-      })
-      const todosPoks = await Promise.all(promesas)
-      const transformedPokemons = todosPoks.map(transformPokemon)
-      setPokemons(transformedPokemons)
-    } catch (err) {
-      setError(true)
-    }
-  }
+  // setPokemons(transformedPokemons)
+  // } catch (err) {
+  //   setError(true)
+  // }
 
   const handleSearch = (query: string) => {
     setQuery(query)
@@ -120,13 +104,15 @@ function App() {
 
   const getContent = () => {
     if (error) {
-      return <div className="error">
-        <img className="iconoConexion" src="alert.svg"/>
-        <p>An error occurred getting Pokémons.</p>
-        <p>Please, try it later</p>
-      </div>
-    } 
-    
+      return (
+        <div className="error">
+          <img className="iconoConexion" src="alert.svg" />
+          <p>An error occurred getting Pokémons.</p>
+          <p>Please, try it later</p>
+        </div>
+      )
+    }
+
     if (pokemons.length === 0) {
       return (
         <div className="wrapper">
@@ -143,7 +129,7 @@ function App() {
         </div>
       )
     }
-    
+
     if (queryPokemons.length === 0) {
       return (
         <div className="error">
@@ -183,7 +169,6 @@ function App() {
       <Footer />
     </div>
   )
-
 }
 
 export default App
