@@ -78,11 +78,6 @@ function App() {
   const [query, setQuery] = useState<string>('')
   const [error, setError] = useState(false)
 
-  // setPokemons(transformedPokemons)
-  // } catch (err) {
-  //   setError(true)
-  // }
-
   const handleSearch = (query: string) => {
     setQuery(query)
   }

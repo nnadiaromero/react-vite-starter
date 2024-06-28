@@ -1,4 +1,4 @@
-import "./emptyCard.modules.css"
+import "./EmptyCard.modules.css"
 
 export function EmptyCard(){
     return (

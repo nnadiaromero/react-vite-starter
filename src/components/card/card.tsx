@@ -1,5 +1,5 @@
 import { Pokemon } from '../../App'
-import './card.modules.css'
+import './Card.modules.css'
 import { Stats } from './cardComponents/Stats/Stats'
 import { Types } from './cardComponents/Types/Types'
 

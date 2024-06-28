@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react'
-import './searchbar.modules.css'
+import './Searchbar.modules.css'
 import '../App'
 
 type SearchBarProps = {

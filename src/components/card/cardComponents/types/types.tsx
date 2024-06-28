@@ -1,5 +1,5 @@
 import { PokemonType } from '../../../../App'
-import './types.modules.css'
+import './Types.modules.css'
 
 type Props = { type: PokemonType }
 
